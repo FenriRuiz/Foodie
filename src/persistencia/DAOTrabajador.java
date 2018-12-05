@@ -39,21 +39,14 @@ public class DAOTrabajador {
 	}
 	public int addWorker(Trabajador trabajador) throws IOException {
 		BufferedWriter file;
-		file = new BufferedWriter(new FileWriter("Trabajadores.txt"));
+		file = new BufferedWriter(new FileWriter("Trabajadores.txt",true));
 
-		for (int i = 0; i < 5; i++) {
-			file.write(trabajador.getName() + ",");
-			file.write(trabajador.getPassword() + ",");
-			file.write(trabajador.getRealName() + ",");
-			file.write(trabajador.getLastConnect() + ",");
-			file.write(trabajador.getRutaIcono());
-			file.newLine();
-		}
+		file.write(trabajador.getName() + "," + trabajador.getPassword() + "," + trabajador.getRealName() + "," 
+						+ trabajador.getLastConnect() + "," + trabajador.getRutaIcono());
+		file.newLine();
+		
 		file.close();
-	//	try {
-	//	} catch (IOException e) {
-	//		e.printStackTrace();
-	//	}
+
 	return 1; 
 	}
 }

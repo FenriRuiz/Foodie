@@ -42,7 +42,6 @@ public class Principal {
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
 			frame.dispose();
-			IniciarSesion ini = new IniciarSesion();
 		}
 	}
 }

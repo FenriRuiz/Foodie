@@ -7,9 +7,12 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.ImageIcon;
 import java.awt.Font;
-import javax.swing.SwingConstants;
 
 public class InfoUsuario extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
 	private JLabel icnUsuario;

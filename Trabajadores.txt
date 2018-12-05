@@ -1,2 +1,2 @@
-fernando,1234,Fernando Ruiz Ruiz,04/12/2018
-nadie,mequiere,nadimequiere,11/06/1995
+fernando,11061995,Fernando Ruiz Ruiz,Wed Dec 05 08:58:52 CET 2018,/recursos/camarero.png
+moni,25051995,Mónica Romero Nájera,Wed Dec 05 09:00:50 CET 2018,/recursos/camarera.png

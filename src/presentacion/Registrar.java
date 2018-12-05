@@ -1,8 +1,5 @@
 package presentacion;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -20,9 +17,14 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Date;
 import java.awt.event.ActionEvent;
+import java.awt.Dimension;
 
 public class Registrar extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JLabel lblNombre;
 	private JLabel lblApellidos;
@@ -42,6 +44,8 @@ public class Registrar extends JFrame {
 	private JTextField textFieldName;
 
 	public Registrar() {
+		setResizable(false);
+		setMinimumSize(new Dimension(520, 400));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 520, 400);
 		contentPane = new JPanel();
@@ -167,20 +171,26 @@ public class Registrar extends JFrame {
 	}
 	
 	private class BtnGuardarActionListener implements ActionListener {
-		@SuppressWarnings("deprecation")
 		public void actionPerformed(ActionEvent arg0) {
-			Date fecha = new Date();
-			Trabajador trab = new Trabajador();
-			trab.setName(textFieldUser.getText());
-			trab.setRealName(textFieldUser.getText()+""+textFieldApellidos.getText());
-			trab.setPassword(String.valueOf(passwordField.getPassword()));
-			trab.setLastConnect(String.valueOf(fecha.getDay())+"/"+String.valueOf(fecha.getMonth())+"/"+String.valueOf(fecha.getYear()));
-			try {
-				trab.guardarTrab(trab);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			//if(String.valueOf(passwordField.getPassword())==String.valueOf(repasswordField.getPassword())){
+				Date fecha = new Date();
+				Trabajador trab = new Trabajador();
+				trab.setName(textFieldUser.getText());
+				trab.setRealName(textFieldName.getText()+" "+textFieldApellidos.getText());
+				trab.setPassword(String.valueOf(passwordField.getPassword()));
+				trab.setLastConnect(fecha.toString());
+				if(rdbtnMujer.isSelected()) {
+					trab.setRutaIcono("/recursos/camarera.png");
+				}else {
+					trab.setRutaIcono("/recursos/camarero.png");}
+				
+				try {
+					trab.guardarTrab(trab);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			//}
 		}
 	}
 	

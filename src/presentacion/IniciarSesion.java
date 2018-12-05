@@ -19,7 +19,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Toolkit;
-import javax.swing.UIManager;
 
 import dominio.Trabajador;
 
