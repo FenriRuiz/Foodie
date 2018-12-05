@@ -8,14 +8,16 @@ import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import javax.swing.JFrame;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.Color;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+
 
 public class Menu extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel lblPedidos;
 	private JLabel lblHabituales;
 	private JLabel lblComidas;
@@ -135,7 +137,6 @@ public class Menu extends JPanel {
 		add(lblNewLabel_3, gbc_lblNewLabel_3);
 		
 		btnAtras = new JLabel("Cerrar Sesión");
-		btnAtras.addMouseListener(new BtnAtrasMouseListener());
 		btnAtras.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 15));
 		btnAtras.setIcon(new ImageIcon(Menu.class.getResource("/recursos/icons8-atrás-64.png")));
 		GridBagConstraints gbc_btnAtras = new GridBagConstraints();
@@ -154,9 +155,4 @@ public class Menu extends JPanel {
 
 	}
 
-	private class BtnAtrasMouseListener extends MouseAdapter {
-		@Override
-		public void mouseClicked(MouseEvent arg0) {
-		}
-	}
 }
