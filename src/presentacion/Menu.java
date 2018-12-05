@@ -44,7 +44,7 @@ public class Menu extends JPanel {
 		setLayout(gridBagLayout);
 		
 		lblCamarero = new JLabel("");
-		lblCamarero.setIcon(new ImageIcon(Menu.class.getResource("/recursos/camarero.png")));
+		lblCamarero.setIcon(new ImageIcon(Menu.class.getResource(trabajador.getRutaIcono())));
 		GridBagConstraints gbc_lblCamarero = new GridBagConstraints();
 		gbc_lblCamarero.insets = new Insets(0, 0, 5, 5);
 		gbc_lblCamarero.gridx = 2;

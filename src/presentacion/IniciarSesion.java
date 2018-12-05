@@ -74,7 +74,7 @@ public class IniciarSesion {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(IniciarSesion.class.getResource("/recursos/camarera.png")));
-		frame.setBounds(0, 0, 1940, 1080);
+		frame.setBounds(150, 100, 1240, 720);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		panel = new JPanel();
@@ -82,7 +82,7 @@ public class IniciarSesion {
 		panel.setForeground(Color.WHITE);
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{224, 224, 162, 256, 256, 176, 177, 177, 0};
+		gbl_panel.columnWidths = new int[]{224, 224, 162, 256, 256, 176, 124, 177, 0};
 		gbl_panel.rowHeights = new int[]{45, 256, 45, 42, 42, 61, 48, 57, 0};
 		gbl_panel.columnWeights = new double[]{1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		gbl_panel.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
@@ -179,9 +179,10 @@ public class IniciarSesion {
 		panel.add(lblError, gbc_lblError);
 		
 		btnRegistrar = new JButton("Registrar");
+		btnRegistrar.addActionListener(new BtnRegistrarActionListener());
 		btnRegistrar.setOpaque(false);
 		btnRegistrar.setContentAreaFilled(false);
-		btnRegistrar.setBackground(UIManager.getColor("Button.background"));
+		btnRegistrar.setBackground(new Color(255, 255, 255));
 		btnRegistrar.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnRegistrar.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 20));
 		GridBagConstraints gbc_btnRegistrar = new GridBagConstraints();
@@ -194,8 +195,7 @@ public class IniciarSesion {
 		btnIniciarSesion = new JButton("Iniciar Sesión");
 		btnIniciarSesion.addActionListener(new BtnIniciarSesionActionListener());
 		btnIniciarSesion.setContentAreaFilled(false);
-		btnIniciarSesion.setOpaque(false);
-		btnIniciarSesion.setBackground(UIManager.getColor("Button.darkShadow"));
+		btnIniciarSesion.setBackground(new Color(255, 255, 255));
 		btnIniciarSesion.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnIniciarSesion.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 20));
 		GridBagConstraints gbc_btnIniciarSesion = new GridBagConstraints();
@@ -215,28 +215,41 @@ public class IniciarSesion {
 		panel.add(lblidioma, gbc_lblidioma);
 
 	}
+	
+	private void iniSesion() {
+		try {
+			int i;
+			Trabajador trab = new Trabajador();
+			ArrayList<Trabajador> listrab = trab.leerTrabajadores();
+			for(i=0;i<listrab.size();i++) {
+				if(listrab.get(i).getName().equals(textField.getText()) && listrab.get(i).getPassword().equals(String.valueOf(passwordField.getPassword()))) {
+					@SuppressWarnings("unused")
+					Principal vntPrin = new Principal(listrab.get(i));
+					frame.dispose();
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		textField.setBorder(BorderFactory.createLineBorder(new Color(236,112,99)));
+		passwordField.setBorder(BorderFactory.createLineBorder(new Color(236,112,99)));
+		lblError.setVisible(true);
+	}
 	private class BtnIniciarSesionActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			try {
-				int i;
-				Trabajador trab = new Trabajador();
-				ArrayList<Trabajador> listrab = trab.leerTrabajadores();
-				for(i=0;i<listrab.size();i++) {
-					if(listrab.get(i).getName().equals(textField.getText()) && listrab.get(i).getPassword().equals(String.valueOf(passwordField.getPassword()))) {
-						Principal vntPrin = new Principal(listrab.get(i));
-						frame.dispose();
-					}
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			textField.setBorder(BorderFactory.createLineBorder(new Color(236,112,99)));
-			passwordField.setBorder(BorderFactory.createLineBorder(new Color(236,112,99)));
-			lblError.setVisible(true);
+			iniSesion();
 		}
 	}
 	private class PasswordFieldActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
+			iniSesion();
 		}
 	}
+	private class BtnRegistrarActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			Registrar reg = new Registrar();
+			reg.setVisible(true);
+		}
+	}
+
 }

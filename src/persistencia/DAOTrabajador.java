@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
@@ -29,28 +30,30 @@ public class DAOTrabajador {
 			trab.setPassword(separador.nextToken());
 			trab.setRealName(separador.nextToken());
 			trab.setLastConnect(separador.nextToken());
+			trab.setRutaIcono(separador.nextToken());
 
 		    workers.add(trab);
 		}
 		datos.close();
 		return workers;	
 	}
-	public int addWorker(Trabajador trabajador) {
-		BufferedWriter out;
-		try {
-			out = new BufferedWriter(new FileWriter("Trabajadores.txt"));
+	public int addWorker(Trabajador trabajador) throws IOException {
+		BufferedWriter file;
+		file = new BufferedWriter(new FileWriter("Trabajadores.txt"));
 
-			for (int i = 0; i < trabajador.length; i++) {
-				out.write(trabajador.getName() + ",");
-				out.write(trabajador.getPassword() + ",");
-				out.write(trabajador.getRealName() + ",");
-			    out.write(trabajador.getLastConnect());
-			    out.newLine();
-			}
-		    out.close();
-		} catch (IOException e) {
-			e.printStackTrace();
+		for (int i = 0; i < 5; i++) {
+			file.write(trabajador.getName() + ",");
+			file.write(trabajador.getPassword() + ",");
+			file.write(trabajador.getRealName() + ",");
+			file.write(trabajador.getLastConnect() + ",");
+			file.write(trabajador.getRutaIcono());
+			file.newLine();
 		}
+		file.close();
+	//	try {
+	//	} catch (IOException e) {
+	//		e.printStackTrace();
+	//	}
 	return 1; 
-}
+	}
 }
