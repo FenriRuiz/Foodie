@@ -7,10 +7,14 @@ import javax.swing.border.EmptyBorder;
 import dominio.Trabajador;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JRadioButton;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
@@ -47,7 +51,7 @@ public class Registrar extends JFrame {
 		setResizable(false);
 		setMinimumSize(new Dimension(520, 400));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 520, 400);
+		setBounds(500, 220, 520, 400);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -172,7 +176,7 @@ public class Registrar extends JFrame {
 	
 	private class BtnGuardarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			//if(String.valueOf(passwordField.getPassword())==String.valueOf(repasswordField.getPassword())){
+			if(String.valueOf(passwordField.getPassword()).equals(String.valueOf(repasswordField.getPassword()))){
 				Date fecha = new Date();
 				Trabajador trab = new Trabajador();
 				trab.setName(textFieldUser.getText());
@@ -185,12 +189,22 @@ public class Registrar extends JFrame {
 					trab.setRutaIcono("/recursos/camarero.png");}
 				
 				try {
-					trab.guardarTrab(trab);
+					if(trab.guardarTrab(trab)==1) {
+						Icon icono = new ImageIcon(getClass().getResource("/recursos/icons8-ok-48.png"));
+						JOptionPane.showConfirmDialog(null, "Usuario añadido correctamente", "Usuario añadido", JOptionPane.DEFAULT_OPTION, JOptionPane.DEFAULT_OPTION,icono);
+					}else {
+						Icon icono = new ImageIcon(getClass().getResource("/recursos/icons8-close-window-48.png"));
+						JOptionPane.showConfirmDialog(null, "Falta usuario y/o contraseña", "Error, al añadir", JOptionPane.DEFAULT_OPTION, JOptionPane.DEFAULT_OPTION,icono);	
+					}
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			//}
+			}
+			else {
+				Icon icono = new ImageIcon(getClass().getResource("/recursos/icons8-close-window-48.png"));
+				JOptionPane.showConfirmDialog(null, "Las contraseñas no coinciden", "Error, al añadir", JOptionPane.DEFAULT_OPTION, JOptionPane.DEFAULT_OPTION,icono);
+			}
 		}
 	}
 	

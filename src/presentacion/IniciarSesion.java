@@ -25,6 +25,7 @@ import dominio.Trabajador;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import java.awt.Dimension;
 
 
 public class IniciarSesion {
@@ -72,8 +73,9 @@ public class IniciarSesion {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setMinimumSize(new Dimension(1270, 720));
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(IniciarSesion.class.getResource("/recursos/camarera.png")));
-		frame.setBounds(150, 100, 1240, 720);
+		frame.setBounds(130, 75, 1240, 720);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		panel = new JPanel();
@@ -82,9 +84,9 @@ public class IniciarSesion {
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{224, 224, 162, 256, 256, 176, 124, 177, 0};
-		gbl_panel.rowHeights = new int[]{45, 256, 45, 42, 42, 61, 48, 57, 0};
+		gbl_panel.rowHeights = new int[]{45, 256, 45, 42, 42, 61, 57, 0};
 		gbl_panel.columnWeights = new double[]{1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
 		panelLogo = new JPanel();
@@ -210,7 +212,7 @@ public class IniciarSesion {
 		gbc_lblidioma.gridwidth = 2;
 		gbc_lblidioma.insets = new Insets(0, 0, 0, 5);
 		gbc_lblidioma.gridx = 3;
-		gbc_lblidioma.gridy = 7;
+		gbc_lblidioma.gridy = 6;
 		panel.add(lblidioma, gbc_lblidioma);
 
 	}

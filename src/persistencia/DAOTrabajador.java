@@ -38,6 +38,9 @@ public class DAOTrabajador {
 		return workers;	
 	}
 	public int addWorker(Trabajador trabajador) throws IOException {
+		if(trabajador.getName().equals("") || trabajador.getPassword().equals("")) {
+			return 0;
+		}
 		BufferedWriter file;
 		file = new BufferedWriter(new FileWriter("Trabajadores.txt",true));
 
@@ -47,6 +50,6 @@ public class DAOTrabajador {
 		
 		file.close();
 
-	return 1; 
+		return 1; 
 	}
 }
