@@ -1,6 +1,9 @@
 package presentacion;
 
 import javax.swing.JPanel;
+
+import dominio.Trabajador;
+
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
@@ -22,7 +25,7 @@ public class InfoUsuario extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public InfoUsuario() {
+	public InfoUsuario(Trabajador trabajador) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 80, 0};
 		gridBagLayout.rowHeights = new int[]{65, 0, 0};
@@ -31,7 +34,7 @@ public class InfoUsuario extends JPanel {
 		setLayout(gridBagLayout);
 		
 		icnUsuario = new JLabel("");
-		icnUsuario.setIcon(new ImageIcon(InfoUsuario.class.getResource("/recursos/camarera.png")));
+		icnUsuario.setIcon(new ImageIcon(InfoUsuario.class.getResource(trabajador.getRutaIcono())));
 		GridBagConstraints gbc_icnUsuario = new GridBagConstraints();
 		gbc_icnUsuario.anchor = GridBagConstraints.SOUTH;
 		gbc_icnUsuario.gridheight = 2;
@@ -49,7 +52,7 @@ public class InfoUsuario extends JPanel {
 		gbc_lblNewLabel.gridy = 0;
 		add(lblNewLabel, gbc_lblNewLabel);
 		
-		lblUserName = new JLabel("New label");
+		lblUserName = new JLabel(trabajador.getRealName());
 		lblUserName.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 15));
 		GridBagConstraints gbc_lblUserName = new GridBagConstraints();
 		gbc_lblUserName.anchor = GridBagConstraints.SOUTHWEST;
@@ -67,7 +70,7 @@ public class InfoUsuario extends JPanel {
 		gbc_lblNewLabel_1.gridy = 1;
 		add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
-		lblUserLastConn = new JLabel("New label");
+		lblUserLastConn = new JLabel(trabajador.getLastConnect().toString());
 		lblUserLastConn.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 15));
 		GridBagConstraints gbc_lblUserLastConn = new GridBagConstraints();
 		gbc_lblUserLastConn.anchor = GridBagConstraints.NORTHWEST;

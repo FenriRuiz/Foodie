@@ -1,10 +1,10 @@
 package presentacion;
 
-import java.awt.BorderLayout;
-
 import javax.swing.JFrame;
 
 import dominio.Trabajador;
+import java.awt.Dimension;
+import java.awt.CardLayout;
 
 
 public class Principal {
@@ -17,11 +17,15 @@ public class Principal {
 
 	private void initialize(Trabajador trabajador) {
 		frame = new JFrame();
-		Menu menu = new Menu(trabajador);
+		frame.setMinimumSize(new Dimension(1240, 750));
+		frame.setSize(new Dimension(1240, 720));
+		Menu menu = new Menu(trabajador, frame);
 		frame.setBounds(130, 75, 1240, 720);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.setLayout(new BorderLayout());
-		frame.add(menu, BorderLayout.CENTER);
+		frame.getContentPane().setLayout(new CardLayout(0, 0));
+		frame.getContentPane().add(menu, "MenuTrabajador");
+		frame.setVisible(true);
+		
 	}
 
 }

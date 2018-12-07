@@ -9,8 +9,15 @@ import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.ImageIcon;
+
 import java.awt.Font;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class Menu extends JPanel {
@@ -18,11 +25,11 @@ public class Menu extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JLabel lblPedidos;
-	private JLabel lblHabituales;
-	private JLabel lblComidas;
-	private JLabel lblNewPedido;
-	private JLabel btnAtras;
+	private JButton lblPedidos;
+	private JButton lblHabituales;
+	private JButton lblComidas;
+	private JButton lblNewPedido;
+	private JButton btnAtras;
 	private JLabel lblCamarero;
 	private JLabel lblUserName;
 	private JLabel label;
@@ -31,11 +38,16 @@ public class Menu extends JPanel {
 	private JLabel lblNewLabel_2;
 	private JLabel lblNewLabel_3;
 	private JLabel label_1;
+	private JFrame frameAncestor;
+	private Trabajador trab;
 
 	/**
 	 * Create the panel.
+	 * @param frame 
 	 */
-	public Menu(Trabajador trabajador) {
+	public Menu(Trabajador trabajador, JFrame frameAn) {
+		frameAncestor=frameAn;
+		trab = trabajador;
 		setBackground(Color.WHITE);
 		setForeground(Color.WHITE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -69,7 +81,9 @@ public class Menu extends JPanel {
 		gbc_label.gridy = 3;
 		add(label, gbc_label);
 		
-		lblNewPedido = new JLabel("");
+		lblNewPedido = new JButton("");
+		lblNewPedido.setBorderPainted(false);
+		lblNewPedido.setBackground(Color.WHITE);
 		lblNewPedido.setIcon(new ImageIcon(Menu.class.getResource("/recursos/icons8-carrito-de-compras-96.png")));
 		GridBagConstraints gbc_lblNewPedido = new GridBagConstraints();
 		gbc_lblNewPedido.insets = new Insets(0, 0, 5, 5);
@@ -85,7 +99,10 @@ public class Menu extends JPanel {
 		gbc_lblNewLabel_2.gridy = 6;
 		add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
-		lblPedidos = new JLabel("");
+		lblPedidos = new JButton("");
+		lblPedidos.addActionListener(new LblPedidosActionListener());
+		lblPedidos.setBorderPainted(false);
+		lblPedidos.setBackground(Color.WHITE);
 		lblPedidos.setIcon(new ImageIcon(Menu.class.getResource("/recursos/icons8-lista-de-quehaceres-96.png")));
 		GridBagConstraints gbc_lblPedidos = new GridBagConstraints();
 		gbc_lblPedidos.anchor = GridBagConstraints.SOUTHEAST;
@@ -94,7 +111,9 @@ public class Menu extends JPanel {
 		gbc_lblPedidos.gridy = 7;
 		add(lblPedidos, gbc_lblPedidos);
 		
-		lblHabituales = new JLabel("");
+		lblHabituales = new JButton("");
+		lblHabituales.setBorderPainted(false);
+		lblHabituales.setBackground(Color.WHITE);
 		lblHabituales.setIcon(new ImageIcon(Menu.class.getResource("/recursos/icons8-llamada-de-conferencia-96.png")));
 		GridBagConstraints gbc_lblHabituales = new GridBagConstraints();
 		gbc_lblHabituales.anchor = GridBagConstraints.SOUTH;
@@ -103,7 +122,10 @@ public class Menu extends JPanel {
 		gbc_lblHabituales.gridy = 7;
 		add(lblHabituales, gbc_lblHabituales);
 		
-		lblComidas = new JLabel("");
+		lblComidas = new JButton("");
+		lblComidas.addActionListener(new LblComidasActionListener());
+		lblComidas.setBorderPainted(false);
+		lblComidas.setBackground(Color.WHITE);
 		lblComidas.setIcon(new ImageIcon(Menu.class.getResource("/recursos/icons8-comida-96.png")));
 		GridBagConstraints gbc_lblComidas = new GridBagConstraints();
 		gbc_lblComidas.anchor = GridBagConstraints.SOUTHWEST;
@@ -136,7 +158,10 @@ public class Menu extends JPanel {
 		gbc_lblNewLabel_3.gridy = 8;
 		add(lblNewLabel_3, gbc_lblNewLabel_3);
 		
-		btnAtras = new JLabel("Cerrar Sesión");
+		btnAtras = new JButton("Cerrar Sesión");
+		btnAtras.addActionListener(new BtnAtrasActionListener());
+		btnAtras.setBorderPainted(false);
+		btnAtras.setBackground(Color.WHITE);
 		btnAtras.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 15));
 		btnAtras.setIcon(new ImageIcon(Menu.class.getResource("/recursos/icons8-atrás-64.png")));
 		GridBagConstraints gbc_btnAtras = new GridBagConstraints();
@@ -155,4 +180,25 @@ public class Menu extends JPanel {
 
 	}
 
+	private class LblPedidosActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+		}
+	}
+	
+	private class BtnAtrasActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			frameAncestor.dispose();
+			@SuppressWarnings("unused")
+			IniciarSesion ini=new IniciarSesion();
+		}
+	}
+	
+	private class LblComidasActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			GestionPlatos gp = new GestionPlatos(trab, frameAncestor);
+			frameAncestor.getContentPane().remove(0);
+			frameAncestor.getContentPane().add(gp, BorderLayout.CENTER);
+		}
+	}
+	
 }

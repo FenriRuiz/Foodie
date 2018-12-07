@@ -50,7 +50,7 @@ public class Registrar extends JFrame {
 	public Registrar() {
 		setResizable(false);
 		setMinimumSize(new Dimension(520, 400));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(500, 220, 520, 400);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
