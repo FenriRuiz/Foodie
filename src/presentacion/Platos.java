@@ -1,139 +1,185 @@
 package presentacion;
 
 import javax.swing.JPanel;
+
+import dominio.Comida;
+
 import java.awt.GridBagLayout;
+import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import java.awt.Font;
-import javax.swing.JButton;
 import javax.swing.ImageIcon;
-import javax.swing.JTextPane;
-import javax.swing.JEditorPane;
+import java.awt.Font;
 import java.awt.Color;
+import javax.swing.border.BevelBorder;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Platos extends JPanel {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JButton lblimagenComida;
-	private JButton btnLact;
-	private JButton btnMar;
-	private JButton btnFSec;
-	private JButton btnGlut;
-	private JEditorPane dtrpnIngredientes;
-	private JButton btnAddComida;
-	private JButton button;
-	private JTextPane txtpnNombreComida;
+	private JLabel lblIconoComida;
+	private JLabel lblNombre;
+	private JLabel lblIngrediente;
+	private JLabel lblIngredientes;
+	private JLabel lblAlergias;
+	private JLabel lblLact;
+	private JLabel lblMarisco;
+	private JLabel lblFrutoSeco;
+	private JLabel lblGluten;
+	private JLabel lblPrecio;
+	private JLabel lblPrecios;
 
 	/**
 	 * Create the panel.
 	 */
-	public Platos() {
-		setForeground(Color.WHITE);
-		setBackground(Color.WHITE);
+	public Platos(Comida comida) {
+		addMouseListener(new ThisMouseListener());
+		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(128, 0, 128), null, null, null));
+		setBackground(new Color(255, 198, 112));
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 77, 75, 76, 75, 69, 71, 0, 0};
+		gridBagLayout.rowHeights = new int[]{60, 84, 0, 0};
+		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		txtpnNombreComida = new JTextPane();
-		txtpnNombreComida.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 15));
-		txtpnNombreComida.setText("Nombre Comida");
-		GridBagConstraints gbc_txtpnNombreComida = new GridBagConstraints();
-		gbc_txtpnNombreComida.gridwidth = 3;
-		gbc_txtpnNombreComida.insets = new Insets(0, 0, 5, 5);
-		gbc_txtpnNombreComida.fill = GridBagConstraints.BOTH;
-		gbc_txtpnNombreComida.gridx = 2;
-		gbc_txtpnNombreComida.gridy = 1;
-		add(txtpnNombreComida, gbc_txtpnNombreComida);
+		lblIconoComida = new JLabel("");
+		lblIconoComida.setIcon(new ImageIcon(Platos.class.getResource(comida.getRutaImagen())));
+		GridBagConstraints gbc_lblIconoComida = new GridBagConstraints();
+		gbc_lblIconoComida.gridwidth = 3;
+		gbc_lblIconoComida.gridheight = 3;
+		gbc_lblIconoComida.insets = new Insets(0, 0, 0, 5);
+		gbc_lblIconoComida.gridx = 0;
+		gbc_lblIconoComida.gridy = 0;
+		add(lblIconoComida, gbc_lblIconoComida);
 		
-		lblimagenComida = new JButton("");
-		lblimagenComida.setBorderPainted(false);
-		lblimagenComida.setBackground(Color.WHITE);
-		lblimagenComida.setIcon(new ImageIcon(Platos.class.getResource("/recursos/images.png")));
-		GridBagConstraints gbc_lblimagenComida = new GridBagConstraints();
-		gbc_lblimagenComida.gridwidth = 3;
-		gbc_lblimagenComida.insets = new Insets(0, 0, 5, 5);
-		gbc_lblimagenComida.gridx = 2;
-		gbc_lblimagenComida.gridy = 2;
-		add(lblimagenComida, gbc_lblimagenComida);
+		lblNombre = new JLabel(comida.getName());
+		lblNombre.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 17));
+		GridBagConstraints gbc_lblNombre = new GridBagConstraints();
+		gbc_lblNombre.anchor = GridBagConstraints.SOUTHWEST;
+		gbc_lblNombre.gridwidth = 4;
+		gbc_lblNombre.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNombre.gridx = 4;
+		gbc_lblNombre.gridy = 0;
+		add(lblNombre, gbc_lblNombre);
 		
-		dtrpnIngredientes = new JEditorPane();
-		dtrpnIngredientes.setText("Ingredientes: Zanahoria, Huevo, Sandía");
-		dtrpnIngredientes.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 15));
-		GridBagConstraints gbc_dtrpnIngredientes = new GridBagConstraints();
-		gbc_dtrpnIngredientes.gridheight = 3;
-		gbc_dtrpnIngredientes.gridwidth = 5;
-		gbc_dtrpnIngredientes.insets = new Insets(0, 0, 5, 5);
-		gbc_dtrpnIngredientes.fill = GridBagConstraints.BOTH;
-		gbc_dtrpnIngredientes.gridx = 1;
-		gbc_dtrpnIngredientes.gridy = 3;
-		add(dtrpnIngredientes, gbc_dtrpnIngredientes);
+		lblPrecio = new JLabel("Precio:");
+		lblPrecio.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 17));
+		GridBagConstraints gbc_lblPrecio = new GridBagConstraints();
+		gbc_lblPrecio.gridheight = 2;
+		gbc_lblPrecio.insets = new Insets(0, 0, 5, 5);
+		gbc_lblPrecio.gridx = 8;
+		gbc_lblPrecio.gridy = 0;
+		add(lblPrecio, gbc_lblPrecio);
 		
-		btnLact = new JButton("");
-		btnLact.setBorderPainted(false);
-		btnLact.setBackground(Color.WHITE);
-		btnLact.setIcon(new ImageIcon(Platos.class.getResource("/recursos/lactosa.png")));
-		GridBagConstraints gbc_btnLact = new GridBagConstraints();
-		gbc_btnLact.insets = new Insets(0, 0, 5, 5);
-		gbc_btnLact.gridx = 2;
-		gbc_btnLact.gridy = 6;
-		add(btnLact, gbc_btnLact);
+		lblPrecios = new JLabel(String.valueOf(comida.getPrecio()) + " €");
+		lblPrecios.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 16));
+		GridBagConstraints gbc_lblPrecios = new GridBagConstraints();
+		gbc_lblPrecios.gridheight = 2;
+		gbc_lblPrecios.insets = new Insets(0, 0, 5, 5);
+		gbc_lblPrecios.gridx = 9;
+		gbc_lblPrecios.gridy = 0;
+		add(lblPrecios, gbc_lblPrecios);
 		
-		btnMar = new JButton("");
-		btnMar.setBorderPainted(false);
-		btnMar.setBackground(Color.WHITE);
-		btnMar.setIcon(new ImageIcon(Platos.class.getResource("/recursos/marisco.png")));
-		GridBagConstraints gbc_btnMar = new GridBagConstraints();
-		gbc_btnMar.insets = new Insets(0, 0, 5, 5);
-		gbc_btnMar.gridx = 3;
-		gbc_btnMar.gridy = 6;
-		add(btnMar, gbc_btnMar);
+		lblIngrediente = new JLabel("Ingredientes:");
+		lblIngrediente.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 17));
+		GridBagConstraints gbc_lblIngrediente = new GridBagConstraints();
+		gbc_lblIngrediente.insets = new Insets(0, 0, 5, 5);
+		gbc_lblIngrediente.gridx = 3;
+		gbc_lblIngrediente.gridy = 1;
+		add(lblIngrediente, gbc_lblIngrediente);
 		
-		btnAddComida = new JButton("");
-		btnAddComida.setBorderPainted(false);
-		btnAddComida.setBackground(Color.WHITE);
-		btnAddComida.setIcon(new ImageIcon(Platos.class.getResource("/recursos/icons8-comida-48.png")));
-		GridBagConstraints gbc_btnAddComida = new GridBagConstraints();
-		gbc_btnAddComida.fill = GridBagConstraints.VERTICAL;
-		gbc_btnAddComida.insets = new Insets(0, 0, 5, 5);
-		gbc_btnAddComida.gridx = 4;
-		gbc_btnAddComida.gridy = 6;
-		add(btnAddComida, gbc_btnAddComida);
+		lblIngredientes = new JLabel(comida.getIngrediente());
+		lblIngredientes.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 15));
+		GridBagConstraints gbc_lblIngredientes = new GridBagConstraints();
+		gbc_lblIngredientes.fill = GridBagConstraints.HORIZONTAL;
+		gbc_lblIngredientes.gridwidth = 4;
+		gbc_lblIngredientes.insets = new Insets(0, 0, 5, 5);
+		gbc_lblIngredientes.gridx = 4;
+		gbc_lblIngredientes.gridy = 1;
+		add(lblIngredientes, gbc_lblIngredientes);
 		
-		btnFSec = new JButton("");
-		btnFSec.setBorderPainted(false);
-		btnFSec.setBackground(Color.WHITE);
-		btnFSec.setIcon(new ImageIcon(Platos.class.getResource("/recursos/frutosSecos.png")));
-		GridBagConstraints gbc_btnFSec = new GridBagConstraints();
-		gbc_btnFSec.insets = new Insets(0, 0, 0, 5);
-		gbc_btnFSec.gridx = 2;
-		gbc_btnFSec.gridy = 7;
-		add(btnFSec, gbc_btnFSec);
+		lblAlergias = new JLabel("Alergias: ");
+		lblAlergias.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 17));
+		GridBagConstraints gbc_lblAlergias = new GridBagConstraints();
+		gbc_lblAlergias.anchor = GridBagConstraints.WEST;
+		gbc_lblAlergias.insets = new Insets(0, 0, 0, 5);
+		gbc_lblAlergias.gridx = 3;
+		gbc_lblAlergias.gridy = 2;
+		add(lblAlergias, gbc_lblAlergias);
 		
-		btnGlut = new JButton("");
-		btnGlut.setBorderPainted(false);
-		btnGlut.setBackground(Color.WHITE);
-		btnGlut.setIcon(new ImageIcon(Platos.class.getResource("/recursos/gluten.png")));
-		GridBagConstraints gbc_btnGlut = new GridBagConstraints();
-		gbc_btnGlut.insets = new Insets(0, 0, 0, 5);
-		gbc_btnGlut.gridx = 3;
-		gbc_btnGlut.gridy = 7;
-		add(btnGlut, gbc_btnGlut);
+		lblLact = new JLabel("");
+		lblLact.setEnabled(false);
+		if(comida.isBwrLact()) {
+			lblLact.setEnabled(true);
+		}
 		
-		button = new JButton("");
-		button.setBorderPainted(false);
-		button.setBackground(Color.WHITE);
-		button.setIcon(new ImageIcon(Platos.class.getResource("/recursos/icons8-eliminar-comida-48.png")));
-		GridBagConstraints gbc_button = new GridBagConstraints();
-		gbc_button.insets = new Insets(0, 0, 0, 5);
-		gbc_button.gridx = 4;
-		gbc_button.gridy = 7;
-		add(button, gbc_button);
+		lblLact.setIcon(new ImageIcon(Platos.class.getResource("/recursos/leche64.png")));
+		GridBagConstraints gbc_lblLact = new GridBagConstraints();
+		gbc_lblLact.insets = new Insets(0, 0, 0, 5);
+		gbc_lblLact.gridx = 4;
+		gbc_lblLact.gridy = 2;
+		add(lblLact, gbc_lblLact);
+		
+		lblMarisco = new JLabel("");
+		lblMarisco.setEnabled(false);
+		if(comida.isBwrMar()) {
+			lblMarisco.setEnabled(true);
+		}
+		
+		lblMarisco.setIcon(new ImageIcon(Platos.class.getResource("/recursos/camaron64.png")));
+		GridBagConstraints gbc_lblMarisco = new GridBagConstraints();
+		gbc_lblMarisco.anchor = GridBagConstraints.EAST;
+		gbc_lblMarisco.insets = new Insets(0, 0, 0, 5);
+		gbc_lblMarisco.gridx = 5;
+		gbc_lblMarisco.gridy = 2;
+		add(lblMarisco, gbc_lblMarisco);
+		
+		lblFrutoSeco = new JLabel("");
+		lblFrutoSeco.setEnabled(false);
+		if(comida.isBwrFSec()) {
+			lblFrutoSeco.setEnabled(true);
+		}
+		
+		lblFrutoSeco.setIcon(new ImageIcon(Platos.class.getResource("/recursos/peanut64.png")));
+		GridBagConstraints gbc_lblFrutoSeco = new GridBagConstraints();
+		gbc_lblFrutoSeco.anchor = GridBagConstraints.EAST;
+		gbc_lblFrutoSeco.insets = new Insets(0, 0, 0, 5);
+		gbc_lblFrutoSeco.gridx = 6;
+		gbc_lblFrutoSeco.gridy = 2;
+		add(lblFrutoSeco, gbc_lblFrutoSeco);
+		
+		lblGluten = new JLabel("");
+		lblGluten.setEnabled(false);
+		if(comida.isBwrGlut()) {
+			lblGluten.setEnabled(true);
+
+		}
+		
+		lblGluten.setIcon(new ImageIcon(Platos.class.getResource("/recursos/gluten64.png")));
+		GridBagConstraints gbc_lblGluten = new GridBagConstraints();
+		gbc_lblGluten.anchor = GridBagConstraints.WEST;
+		gbc_lblGluten.insets = new Insets(0, 0, 0, 5);
+		gbc_lblGluten.gridx = 7;
+		gbc_lblGluten.gridy = 2;
+		add(lblGluten, gbc_lblGluten);
 
 	}
 
+	private class ThisMouseListener extends MouseAdapter {
+		@Override
+		public void mousePressed(MouseEvent arg0) {
+			setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(128, 0, 128), null, null, null));
+			setBackground(new Color(255, 100, 100));
+
+		}
+		@Override
+		public void mouseReleased(MouseEvent arg0) {
+			setBorder(new BevelBorder(BevelBorder.RAISED, new Color(128, 0, 128), null, null, null));
+			setBackground(new Color(255, 198, 112));
+		}
+	}
 }

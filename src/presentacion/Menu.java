@@ -198,6 +198,7 @@ public class Menu extends JPanel {
 			GestionPlatos gp = new GestionPlatos(trab, frameAncestor);
 			frameAncestor.getContentPane().remove(0);
 			frameAncestor.getContentPane().add(gp, BorderLayout.CENTER);
+			frameAncestor.revalidate();
 		}
 	}
 	

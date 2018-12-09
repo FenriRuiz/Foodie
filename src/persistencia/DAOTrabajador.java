@@ -16,7 +16,7 @@ public class DAOTrabajador {
 	public ArrayList<Trabajador> getAllWorkers() throws FileNotFoundException {
 		File file = new File("Trabajadores.txt");
 		Scanner datos = new Scanner(file);
-		datos.useDelimiter(",");
+		datos.useDelimiter(";");
 		ArrayList<Trabajador> workers = new ArrayList<Trabajador>();
 		String linea = "";
 		
@@ -24,7 +24,7 @@ public class DAOTrabajador {
 			linea = datos.nextLine();
 			
 			Trabajador trab = new Trabajador();
-			StringTokenizer separador = new StringTokenizer(linea, ",");
+			StringTokenizer separador = new StringTokenizer(linea, ";");
 			
 			trab.setName(separador.nextToken());
 			trab.setPassword(separador.nextToken());
@@ -44,8 +44,8 @@ public class DAOTrabajador {
 		BufferedWriter file;
 		file = new BufferedWriter(new FileWriter("Trabajadores.txt",true));
 
-		file.write(trabajador.getName() + "," + trabajador.getPassword() + "," + trabajador.getRealName() + "," 
-						+ trabajador.getLastConnect() + "," + trabajador.getRutaIcono());
+		file.write(trabajador.getName() + ";" + trabajador.getPassword() + ";" + trabajador.getRealName() + ";" 
+						+ trabajador.getLastConnect() + ";" + trabajador.getRutaIcono());
 		file.newLine();
 		
 		file.close();

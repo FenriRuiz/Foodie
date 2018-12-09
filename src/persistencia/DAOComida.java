@@ -16,7 +16,7 @@ public class DAOComida {
 	public ArrayList<Comida> getAllDish() throws FileNotFoundException {
 		File file = new File("Comidas.txt");
 		Scanner datos = new Scanner(file);
-		datos.useDelimiter(",");
+		datos.useDelimiter(";");
 		ArrayList<Comida> dishes = new ArrayList<Comida>();
 		String linea = "";
 		
@@ -24,9 +24,10 @@ public class DAOComida {
 			linea = datos.nextLine();
 			
 			Comida com = new Comida();
-			StringTokenizer separador = new StringTokenizer(linea, ",");
+			StringTokenizer separador = new StringTokenizer(linea, ";");
 			
 			com.setIdentificador(Integer.parseInt(separador.nextToken()));
+			com.setPestana(separador.nextToken());
 			com.setName(separador.nextToken());
 			com.setIngrediente(separador.nextToken());
 			com.setBwrLact(Boolean.parseBoolean(separador.nextToken()));
@@ -45,15 +46,17 @@ public class DAOComida {
 		BufferedWriter file;
 		file = new BufferedWriter(new FileWriter("Comidas.txt",true));
 
-		file.write(String.valueOf(com.getIdentificador()) + ",");
-		file.write(com.getName() + ",");
-		file.write(com.getIngrediente() + ",");
-		file.write(String.valueOf(com.isBwrLact()) + ",");
-		file.write(String.valueOf(com.isBwrMar()) + ",");
-		file.write(String.valueOf(com.isBwrFSec()) + ",");
-		file.write(String.valueOf(com.isBwrGlut()) + ",");
-		file.write(String.valueOf(com.getPrecio()) + ",");
-		file.write(com.getRutaImagen() + ",");
+		file.write(String.valueOf(com.getIdentificador()) + ";");
+		file.write(com.getPestana() + ";");
+		file.write(com.getName() + ";");
+		file.write(com.getIngrediente() + ";");
+		file.write(String.valueOf(com.isBwrLact()) + ";");
+		file.write(String.valueOf(com.isBwrMar()) + ";");
+		file.write(String.valueOf(com.isBwrFSec()) + ";");
+		file.write(String.valueOf(com.isBwrGlut()) + ";");
+		file.write(String.valueOf(com.getPrecio()) + ";");
+		file.write(com.getRutaImagen() + ";");
+
 		
 		file.newLine();
 		

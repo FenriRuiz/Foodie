@@ -18,7 +18,8 @@ public class Comida {
 	private String rutaImagen;
 	private double precio;
 
-	public Comida(int identificador, String name, String ingrediente, boolean bwrLact, boolean bwrMar, boolean bwrFSec, boolean bwrGlut, String rutaImagen, double precio) {
+	public Comida(int identificador, String name, String ingrediente, boolean bwrLact, boolean bwrMar, boolean bwrFSec,
+			boolean bwrGlut, String rutaImagen, double precio, String pestana) {
 		this.identificador = identificador;
 		this.name = name;
 		this.ingrediente = ingrediente;
@@ -28,6 +29,7 @@ public class Comida {
 		this.bwrGlut = bwrGlut;
 		this.rutaImagen = rutaImagen;
 		this.precio = precio;
+		this.pestana = pestana;
 	}
 
 	public Comida() {
