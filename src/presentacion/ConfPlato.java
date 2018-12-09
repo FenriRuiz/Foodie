@@ -15,6 +15,7 @@ import javax.swing.border.BevelBorder;
 
 import dominio.Comida;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class ConfPlato extends JPanel {
@@ -200,6 +201,7 @@ public class ConfPlato extends JPanel {
 		add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
 		btnAddComida = new JButton("");
+		btnAddComida.addActionListener(new BtnAddComidaActionListener());
 		btnAddComida.setOpaque(false);
 		btnAddComida.setBorderPainted(false);
 		btnAddComida.setBackground(new Color(255, 148, 62));
@@ -265,6 +267,16 @@ public class ConfPlato extends JPanel {
 			}else {
 				com.setBwrGlut(true);
 				btnGlut.setIcon(new ImageIcon(ConfPlato.class.getResource("/recursos/gluten64.png")));
+			}
+		}
+	}
+	private class BtnAddComidaActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			try {
+				com.guardarComida(com);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 	}

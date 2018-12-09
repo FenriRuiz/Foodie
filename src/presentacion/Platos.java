@@ -10,6 +10,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.border.BevelBorder;
 import java.awt.event.MouseAdapter;
@@ -31,11 +32,16 @@ public class Platos extends JPanel {
 	private JLabel lblGluten;
 	private JLabel lblPrecio;
 	private JLabel lblPrecios;
+	private JPanel panel;
+	private Comida com;
 
 	/**
 	 * Create the panel.
+	 * @param panel2 
 	 */
-	public Platos(Comida comida) {
+	public Platos(Comida comida, JPanel panel2) {
+		com = comida;
+		panel = panel2;
 		addMouseListener(new ThisMouseListener());
 		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(128, 0, 128), null, null, null));
 		setBackground(new Color(255, 198, 112));
@@ -180,6 +186,12 @@ public class Platos extends JPanel {
 		public void mouseReleased(MouseEvent arg0) {
 			setBorder(new BevelBorder(BevelBorder.RAISED, new Color(128, 0, 128), null, null, null));
 			setBackground(new Color(255, 198, 112));
+			BorderLayout layout = (BorderLayout) panel.getLayout();
+			panel.remove(layout.getLayoutComponent(BorderLayout.EAST));
+			ConfPlato plMod = new ConfPlato(com);
+			panel.add(plMod, BorderLayout.EAST);
+			panel.repaint();
+			panel.revalidate();
 		}
 	}
 }

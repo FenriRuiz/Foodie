@@ -19,32 +19,29 @@ public class GestionPlatos extends JPanel {
 	/**
 	 * Create the panel.
 	 * @param frameAncestor 
+	 * @throws FileNotFoundException 
 	 */
-	public GestionPlatos(Trabajador trabajador, JFrame frameAncestor) {
-
-		
+	public GestionPlatos(Trabajador trabajador, JFrame frameAncestor) throws FileNotFoundException {
 		setLayout(new BorderLayout(0, 0));
 		
-		try {
-			Comida comida = new Comida();
-			ArrayList<Comida> listaComidas = comida.leerComidas();
-			
-			ConfPlato pl = new ConfPlato(listaComidas.get(0));
-			add(pl, BorderLayout.EAST);
-			
-			ListaPlatos mPlatos = new ListaPlatos(listaComidas);
-			add(mPlatos, BorderLayout.CENTER);
-			
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		JPanel panel = new JPanel();
+		add(panel);
+		
+		Comida comida = new Comida();
+		ArrayList<Comida> listaComidas = comida.leerComidas();
+		panel.setLayout(new BorderLayout(0, 0));
+		
+		ConfPlato pl = new ConfPlato(listaComidas.get(0));
+		panel.add(pl, BorderLayout.EAST);
+		
+		botonesIzq btnIzq = new botonesIzq(trabajador, frameAncestor, panel);
+		panel.add(btnIzq, BorderLayout.WEST);
 		
 		InfoUsuario infUser = new InfoUsuario(trabajador, frameAncestor);
-		add(infUser, BorderLayout.NORTH);
+		panel.add(infUser, BorderLayout.NORTH);
 		
-		botonesIzq btnIzq = new botonesIzq(trabajador, frameAncestor);
-		add(btnIzq, BorderLayout.WEST);
+		ListaPlatos mPlatos = new ListaPlatos("", panel);
+		panel.add(mPlatos, BorderLayout.CENTER);
 		
 	}
 

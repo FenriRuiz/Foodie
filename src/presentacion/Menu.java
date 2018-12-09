@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.awt.event.ActionEvent;
 
 
@@ -195,10 +196,16 @@ public class Menu extends JPanel {
 	
 	private class LblComidasActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			GestionPlatos gp = new GestionPlatos(trab, frameAncestor);
-			frameAncestor.getContentPane().remove(0);
-			frameAncestor.getContentPane().add(gp, BorderLayout.CENTER);
-			frameAncestor.revalidate();
+			GestionPlatos gp;
+			try {
+				gp = new GestionPlatos(trab, frameAncestor);
+				frameAncestor.getContentPane().remove(0);
+				frameAncestor.getContentPane().add(gp, BorderLayout.CENTER);
+				frameAncestor.revalidate();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+
 		}
 	}
 	

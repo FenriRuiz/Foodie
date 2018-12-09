@@ -14,14 +14,12 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.border.SoftBevelBorder;
 
-import dominio.Comida;
 import dominio.Trabajador;
 
 import javax.swing.border.BevelBorder;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
+
 import java.awt.event.ActionEvent;
 
 public class botonesIzq extends JPanel {
@@ -40,12 +38,15 @@ public class botonesIzq extends JPanel {
 	private JFrame frameAncestor;
 	private Trabajador trab;
 	private JButton btnCuchara;
+	private JPanel panel;
 	/**
 	 * Create the panel.
 	 * @param frameAncestor 
 	 * @param trabajador 
+	 * @param panel2 
 	 */
-	public botonesIzq(Trabajador trabajador, JFrame frame) {
+	public botonesIzq(Trabajador trabajador, JFrame frame, JPanel panel2) {
+		panel = panel2;
 		trab = trabajador;
 		frameAncestor = frame;
 		setBackground(new Color(255, 148, 62));
@@ -185,6 +186,13 @@ public class botonesIzq extends JPanel {
 			btnCuchara.setBackground(new Color(255, 153, 0));
 			btnBebidas.setBackground(new Color(255, 153, 0));
 			btnPostres.setBackground(new Color(255, 153, 0));
+			BorderLayout layout = (BorderLayout) panel.getLayout();
+			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
+			ListaPlatos lpCarne = new ListaPlatos("Carne", panel);
+			panel.add(lpCarne, BorderLayout.CENTER);
+			panel.repaint();
+			panel.revalidate();
+
 		}
 	}
 	private class BtnPescadoActionListener implements ActionListener {
@@ -196,6 +204,12 @@ public class botonesIzq extends JPanel {
 			btnCuchara.setBackground(new Color(255, 153, 0));
 			btnBebidas.setBackground(new Color(255, 153, 0));
 			btnPostres.setBackground(new Color(255, 153, 0));
+			BorderLayout layout = (BorderLayout) panel.getLayout();
+			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
+			ListaPlatos lpMod = new ListaPlatos("Pescado", panel);
+			panel.add(lpMod, BorderLayout.CENTER);
+			panel.repaint();
+			panel.revalidate();
 		}
 	}
 	private class BtnPastaActionListener implements ActionListener {
@@ -207,6 +221,12 @@ public class botonesIzq extends JPanel {
 			btnCuchara.setBackground(new Color(255, 153, 0));
 			btnBebidas.setBackground(new Color(255, 153, 0));
 			btnPostres.setBackground(new Color(255, 153, 0));
+			BorderLayout layout = (BorderLayout) panel.getLayout();
+			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
+			ListaPlatos lpMod = new ListaPlatos("Pasta", panel);
+			panel.add(lpMod, BorderLayout.CENTER);
+			panel.repaint();
+			panel.revalidate();
 		}
 	}
 	private class BtnVegieActionListener implements ActionListener {
@@ -218,6 +238,12 @@ public class botonesIzq extends JPanel {
 			btnCuchara.setBackground(new Color(255, 153, 0));
 			btnBebidas.setBackground(new Color(255, 153, 0));
 			btnPostres.setBackground(new Color(255, 153, 0));
+			BorderLayout layout = (BorderLayout) panel.getLayout();
+			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
+			ListaPlatos lpMod = new ListaPlatos("Vegano", panel);
+			panel.add(lpMod, BorderLayout.CENTER);
+			panel.repaint();
+			panel.revalidate();
 		}
 	}
 	private class BtnCucharaActionListener implements ActionListener {
@@ -229,6 +255,12 @@ public class botonesIzq extends JPanel {
 			btnCuchara.setBackground(new Color(255, 79, 50));
 			btnBebidas.setBackground(new Color(255, 153, 0));
 			btnPostres.setBackground(new Color(255, 153, 0));
+			BorderLayout layout = (BorderLayout) panel.getLayout();
+			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
+			ListaPlatos lpMod = new ListaPlatos("Cuchara", panel);
+			panel.add(lpMod, BorderLayout.CENTER);
+			panel.repaint();
+			panel.revalidate();
 		}
 	}
 
@@ -241,6 +273,12 @@ public class botonesIzq extends JPanel {
 			btnCuchara.setBackground(new Color(255, 153, 0));
 			btnBebidas.setBackground(new Color(255, 79, 50));
 			btnPostres.setBackground(new Color(255, 153, 0));
+			BorderLayout layout = (BorderLayout) panel.getLayout();
+			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
+			ListaPlatos lpMod = new ListaPlatos("Bebida", panel);
+			panel.add(lpMod, BorderLayout.CENTER);
+			panel.repaint();
+			panel.revalidate();
 		}
 	}
 	private class BtnPostresActionListener implements ActionListener {
@@ -252,6 +290,12 @@ public class botonesIzq extends JPanel {
 			btnCuchara.setBackground(new Color(255, 153, 0));
 			btnBebidas.setBackground(new Color(255, 153, 0));
 			btnPostres.setBackground(new Color(255, 79, 50));
+			BorderLayout layout = (BorderLayout) panel.getLayout();
+			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
+			ListaPlatos lpMod = new ListaPlatos("Postre", panel);
+			panel.add(lpMod, BorderLayout.CENTER);
+			panel.repaint();
+			panel.revalidate();
 		}
 	}
 }

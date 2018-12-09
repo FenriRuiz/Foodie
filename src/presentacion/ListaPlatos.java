@@ -11,6 +11,7 @@ import dominio.Comida;
 
 import java.awt.BorderLayout;
 import javax.swing.ScrollPaneConstants;
+import java.awt.Color;
 
 public class ListaPlatos extends JPanel {
 	/**
@@ -22,12 +23,15 @@ public class ListaPlatos extends JPanel {
 
 	/**
 	 * Create the panel.
+	 * @param panel2 
+	 * @param antecesor 
 	 * @param listaComidas 
 	 * @param mostrar 
 	 * @param mMenu 
 	 */
 
-	public ListaPlatos(ArrayList<Comida> listaComidas) {
+	public ListaPlatos(String eleccion, JPanel panel2) {
+		
 		setLayout(new BorderLayout(0, 0));
 		
 		scrollPane = new JScrollPane();
@@ -35,19 +39,28 @@ public class ListaPlatos extends JPanel {
 		add(scrollPane);
 		
 		panel = new JPanel();
+		panel.setBackground(Color.ORANGE);
 		scrollPane.setViewportView(panel);
 		panel.setLayout(new GridLayout(0, 1, 0, 0));
 
 
 		try {
 			Comida comida = new Comida();
-			listaComidas = comida.leerComidas();
+			ArrayList<Comida> listaComidas = comida.leerComidas();
 			int i;
 			for(i=0 ; i < listaComidas.size() ; i++) {
-				Platos platillo = new Platos(listaComidas.get(i));
-				panel.add(platillo);
-				panel.repaint();
-				panel.revalidate();
+				if(eleccion=="") {
+					Platos platillo = new Platos(listaComidas.get(i), panel2);
+					panel.add(platillo);
+					panel.repaint();
+					panel.revalidate();
+				}
+				else if(listaComidas.get(i).getPestana().equals(eleccion)) {
+					Platos platillo = new Platos(listaComidas.get(i), panel2);
+					panel.add(platillo);
+					panel.repaint();
+					panel.revalidate();
+				}
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -55,6 +68,7 @@ public class ListaPlatos extends JPanel {
 		}
 
 	}
+
 }
 
 
