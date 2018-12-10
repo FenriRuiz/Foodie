@@ -17,6 +17,10 @@ import dominio.Comida;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 public class ConfPlato extends JPanel {
 	/**
@@ -38,6 +42,10 @@ public class ConfPlato extends JPanel {
 	private JLabel lblAdd;
 	private JLabel lblNewLabel_1;
 	private Comida com;
+	private JLabel lblPestana;
+	private JComboBox<String> comboBox;
+	private JLabel lblPrecio;
+	private JSpinner spinner;
 	/**
 	 * Create the panel.
 	 */
@@ -46,9 +54,9 @@ public class ConfPlato extends JPanel {
 		setBackground(new Color(255, 148, 62));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{40, 50, 50, 40, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		lblNewLabel = new JLabel("Nombre Comida");
@@ -109,13 +117,32 @@ public class ConfPlato extends JPanel {
 		gbc_dtrpnIngredientes.gridy = 5;
 		add(dtrpnIngredientes, gbc_dtrpnIngredientes);
 		
+		lblPestana = new JLabel("Pestaña");
+		lblPestana.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 15));
+		GridBagConstraints gbc_lblPestana = new GridBagConstraints();
+		gbc_lblPestana.gridwidth = 2;
+		gbc_lblPestana.insets = new Insets(0, 0, 5, 5);
+		gbc_lblPestana.gridx = 1;
+		gbc_lblPestana.gridy = 8;
+		add(lblPestana, gbc_lblPestana);
+		
+		comboBox = new JComboBox<String>();
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"Carne", "Pescado", "Pasta", "Vegie", "Cuchara", "Bebida", "Postre"}));
+		GridBagConstraints gbc_comboBox = new GridBagConstraints();
+		gbc_comboBox.gridwidth = 2;
+		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBox.gridx = 1;
+		gbc_comboBox.gridy = 9;
+		add(comboBox, gbc_comboBox);
+		
 		lblAlergias = new JLabel("Alergias");
 		lblAlergias.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 15));
 		GridBagConstraints gbc_lblAlergias = new GridBagConstraints();
 		gbc_lblAlergias.gridwidth = 2;
 		gbc_lblAlergias.insets = new Insets(0, 0, 5, 5);
 		gbc_lblAlergias.gridx = 1;
-		gbc_lblAlergias.gridy = 8;
+		gbc_lblAlergias.gridy = 10;
 		add(lblAlergias, gbc_lblAlergias);
 		
 		btnLact = new JButton("");
@@ -131,7 +158,7 @@ public class ConfPlato extends JPanel {
 		GridBagConstraints gbc_btnLact = new GridBagConstraints();
 		gbc_btnLact.insets = new Insets(0, 0, 5, 5);
 		gbc_btnLact.gridx = 1;
-		gbc_btnLact.gridy = 9;
+		gbc_btnLact.gridy = 11;
 		add(btnLact, gbc_btnLact);
 		
 		btnMar = new JButton("");
@@ -147,7 +174,7 @@ public class ConfPlato extends JPanel {
 		GridBagConstraints gbc_btnMar = new GridBagConstraints();
 		gbc_btnMar.insets = new Insets(0, 0, 5, 5);
 		gbc_btnMar.gridx = 2;
-		gbc_btnMar.gridy = 9;
+		gbc_btnMar.gridy = 11;
 		add(btnMar, gbc_btnMar);
 		
 		btnFSec = new JButton("");
@@ -163,7 +190,7 @@ public class ConfPlato extends JPanel {
 		GridBagConstraints gbc_btnFSec = new GridBagConstraints();
 		gbc_btnFSec.insets = new Insets(0, 0, 5, 5);
 		gbc_btnFSec.gridx = 1;
-		gbc_btnFSec.gridy = 10;
+		gbc_btnFSec.gridy = 12;
 		add(btnFSec, gbc_btnFSec);
 		
 		btnGlut = new JButton("");
@@ -179,8 +206,26 @@ public class ConfPlato extends JPanel {
 		GridBagConstraints gbc_btnGlut = new GridBagConstraints();
 		gbc_btnGlut.insets = new Insets(0, 0, 5, 5);
 		gbc_btnGlut.gridx = 2;
-		gbc_btnGlut.gridy = 10;
+		gbc_btnGlut.gridy = 12;
 		add(btnGlut, gbc_btnGlut);
+		
+		lblPrecio = new JLabel("Precio");
+		lblPrecio.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 15));
+		GridBagConstraints gbc_lblPrecio = new GridBagConstraints();
+		gbc_lblPrecio.gridwidth = 2;
+		gbc_lblPrecio.insets = new Insets(0, 0, 5, 5);
+		gbc_lblPrecio.gridx = 1;
+		gbc_lblPrecio.gridy = 13;
+		add(lblPrecio, gbc_lblPrecio);
+		
+		spinner = new JSpinner();
+		spinner.setModel(new SpinnerNumberModel(0.0, 0.0, 10.0, 0.1));
+		GridBagConstraints gbc_spinner = new GridBagConstraints();
+		gbc_spinner.gridwidth = 2;
+		gbc_spinner.insets = new Insets(0, 0, 5, 5);
+		gbc_spinner.gridx = 1;
+		gbc_spinner.gridy = 14;
+		add(spinner, gbc_spinner);
 		
 		lblAdd = new JLabel("Añadir ");
 		lblAdd.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 15));
@@ -188,7 +233,7 @@ public class ConfPlato extends JPanel {
 		gbc_lblAdd.anchor = GridBagConstraints.SOUTH;
 		gbc_lblAdd.insets = new Insets(0, 0, 5, 5);
 		gbc_lblAdd.gridx = 1;
-		gbc_lblAdd.gridy = 11;
+		gbc_lblAdd.gridy = 15;
 		add(lblAdd, gbc_lblAdd);
 		
 		lblNewLabel_1 = new JLabel("Eliminar");
@@ -197,7 +242,7 @@ public class ConfPlato extends JPanel {
 		gbc_lblNewLabel_1.anchor = GridBagConstraints.SOUTH;
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_1.gridx = 2;
-		gbc_lblNewLabel_1.gridy = 11;
+		gbc_lblNewLabel_1.gridy = 15;
 		add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
 		btnAddComida = new JButton("");
@@ -210,7 +255,7 @@ public class ConfPlato extends JPanel {
 		gbc_btnAddComida.fill = GridBagConstraints.VERTICAL;
 		gbc_btnAddComida.insets = new Insets(0, 0, 5, 5);
 		gbc_btnAddComida.gridx = 1;
-		gbc_btnAddComida.gridy = 12;
+		gbc_btnAddComida.gridy = 16;
 		add(btnAddComida, gbc_btnAddComida);
 		
 		button = new JButton("");
@@ -221,7 +266,7 @@ public class ConfPlato extends JPanel {
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.insets = new Insets(0, 0, 5, 5);
 		gbc_button.gridx = 2;
-		gbc_button.gridy = 12;
+		gbc_button.gridy = 16;
 		add(button, gbc_button);
 
 	}
@@ -273,7 +318,18 @@ public class ConfPlato extends JPanel {
 	private class BtnAddComidaActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			try {
-				com.guardarComida(com);
+				Comida comida = new Comida();
+				comida.setIdentificador(1);
+				comida.setName(txtpnNombreComida.getText());
+				comida.setIngrediente(dtrpnIngredientes.getText());
+				comida.setBwrFSec(com.isBwrFSec());
+				comida.setBwrGlut(com.isBwrGlut());
+				comida.setBwrLact(com.isBwrLact());
+				comida.setBwrMar(com.isBwrMar());
+				comida.setPestana(comboBox.getSelectedItem().toString());
+				comida.setPrecio((double) spinner.getValue());
+				comida.setRutaImagen(com.getRutaImagen());
+				com.guardarComida(comida);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

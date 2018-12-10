@@ -4,3 +4,4 @@
 4;Bebida;Cocacola; ;false;false;false;false;1.80;/recursos/bebida.png
 5;Bebida;Fanta Naranja; ;false;false;false;false;1.80;/recursos/bebida.png
 6;Bebida;Fanta Limon; ;false;false;false;false;1.80;/recursos/bebida.png
+1;Pescado;Pescado prueba;Muchas cosas;false;true;true;false;2.5;/recursos/pescado.png;
