@@ -14,7 +14,7 @@ import dominio.Comida;
 public class DAOComida {
 	
 	public ArrayList<Comida> getAllDish() throws FileNotFoundException {
-		File file = new File("Comidas.txt");
+		File file = new File("src/persistencia/Comidas.txt");
 		Scanner datos = new Scanner(file);
 		datos.useDelimiter(";");
 		ArrayList<Comida> dishes = new ArrayList<Comida>();

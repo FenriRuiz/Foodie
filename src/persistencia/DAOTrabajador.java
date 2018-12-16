@@ -14,7 +14,7 @@ import dominio.Trabajador;
 public class DAOTrabajador {
 		
 	public ArrayList<Trabajador> getAllWorkers() throws FileNotFoundException {
-		File file = new File("Trabajadores.txt");
+		File file = new File("src/persistencia/Trabajadores.txt");
 		Scanner datos = new Scanner(file);
 		datos.useDelimiter(";");
 		ArrayList<Trabajador> workers = new ArrayList<Trabajador>();
