@@ -1,9 +1,24 @@
-1;Carne;Costillas al vapor con patatas;Patatas, Costillas de cerdo y Cebolla;false;false;false;false;5.40;/recursos/carne.png
-2;Cuchara;Crema de calabazin con zanahaorias;Patata, Leche, Calabazin, Zanahora y Queso;true;false;false;false;2.90;/recursos/leche64.png
-3;Bebida;Agua; ;false;false;false;false;1.20;/recursos/bebida.png
-4;Bebida;Cocacola; ;false;false;false;false;1.80;/recursos/bebida.png
-5;Bebida;Fanta Naranja; ;false;false;false;false;1.80;/recursos/bebida.png
-6;Bebida;Fanta Limon; ;false;false;false;false;1.80;/recursos/bebida.png
-1;Pescado;Pescado prueba;Muchas cosas;false;true;true;false;2.5;/recursos/pescado.png;
-1;Pasta;Pasta prueba;Muchas cosas demasiadas;false;false;false;true;1.2;/recursos/pasta.png;
-1;Carne;Costillas al vapor con patatas;Patatas, Costillas de cerdo y Cebolla;true;false;false;true;0.0;/recursos/carne.png;
+0; ; ; ;false;false;false;false;0.0;/recursos/imagen.png
+1;Carne;Albondigas con champiñones;Carne de cerdo y tenera y Champiñones;false;false;false;true;3.5;/recursos/carne.png 
+2;Carne;Carpaccio de ternera con queso;Ternera y Queso Manchego;true;false;false;false;3.0;/recursos/carne.png
+3;Carne;Conejo a la jardinera;Conejo, Guisantes, Tomate y Alcachofas;false;false;false;false;3.2;/recursos/carne.png
+4;Pescado;Bacalao con salsa de pimientos verdes;Bacalao y Pimientos rojos y verdes;false;false;false;false;2.9;/recursos/pescado.png 
+5;Pescado;Almejas con espinacas;Almejas, Espinacas, Nata, Brandy y Huevos;true;true;false;false;4.0;/recursos/pescado.png
+6;Pescado;Pulpo a la gallega;Pulpo, Patatas y pimpenton picante;false;true;false;false;5.2;/recursos/pescado.png
+7;Pasta;Canelones de Espinacas;Espinacas, Cebolla, Tomate, Pimiento Verde, Bechamel;false;false;false;true;2.4;/recursos/pasta.png
+8;Pasta;Canelones de Bonito;Bonito, Cebolla, Tomate, Pimiento Verde y Bechamel;false;false;false;true;2.6;/recursos/pasta.png
+9;Pasta;Tallarines con carne;Carne de cerdo y ternera, Cebolla, Tomate y Albahaca;false;false;false;true;2.8;/recursos/pasta.png 
+10;Vegano;Canelones de Espinacas;Espinacas, Cebolla, Tomate y Pimiento Verde;false;false;false;false;3.0;/recursos/pasta.png
+11;Vegano;Judías verdes con tomate; Judias verdes, Cebolla y Tomate;false;false;false;false;2.3;/recursos/vegie.png
+12;Vegano;Menestra de verduras rebozadas;Alcachofas, Esparragos, Colifror, Habas, Guisantes y Espinacas;false;false;false;false;2.8;/recursos/vegie.png
+13;Cuchara;Lentejas de la abuela;Lentejas, Tomate, Chorizo, Zanahoria, Cebolla y Calabazin;false;false;false;false;2.2;/recursos/estofado.png
+14;Cuchara;Judías de la abuela;Judías, Chorizo, Panceta, Cebolla, Carne de pollo;false;false;false;false;2.2;/recursos/estofado.png
+15;Cuchara;Estofado de ternera;Carne de ternera, Zanahoria, Patatas y Vino tinto;false;false;false;false;2.5;/recursos/estofado.png
+16;Postre;Flan de huevo;Huevo, Caramelo y nata montada;true;false;true;false;1.4;/recursos/postre.png
+17;Postre;Helado de fresa y nata; ;true;false;false;false;1.0;/recursos/postre.png
+18;Postre;Fruta del tiempo; ;false;false;false;false;1.0;/recursos/postre.png
+19;Bebida;Botella de Agua; ;false;false;false;false;0.5;/recursos/bebida.png
+20;Bebida;Refresco Carbonatado;Venenato Monosodico, Plutonio poco desmineralizado;false;false;false;false;1.8;/recursos/bebida.png
+21;Bebida;Cerveza Duff; ;false;false;false;false;1.2;/recursos/bebida.png
+22;Carne;Hamburguesa al Jerez;Carne de cerdo y tenera, Huevo, Queso y reducción de Vino de Jerez;true;false;false;true;4.6;/recursos/carne.png ;
+24;Pescado;Dorada a la espalda;Dorada aliñada con especias, al horno;false;false;false;false;3.5;/recursos/pescado.png ;

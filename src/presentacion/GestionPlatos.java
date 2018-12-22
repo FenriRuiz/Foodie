@@ -31,16 +31,16 @@ public class GestionPlatos extends JPanel {
 		ArrayList<Comida> listaComidas = comida.leerComidas();
 		panel.setLayout(new BorderLayout(0, 0));
 		
-		ConfPlato pl = new ConfPlato(listaComidas.get(0));
+		GestionPlatosR pl = new GestionPlatosR(listaComidas.get(0), listaComidas);
 		panel.add(pl, BorderLayout.EAST);
 		
-		botonesIzq btnIzq = new botonesIzq(trabajador, frameAncestor, panel);
+		GestionPlatosL btnIzq = new GestionPlatosL(trabajador, frameAncestor, panel);
 		panel.add(btnIzq, BorderLayout.WEST);
 		
 		InfoUsuario infUser = new InfoUsuario(trabajador, frameAncestor);
 		panel.add(infUser, BorderLayout.NORTH);
 		
-		ListaPlatos mPlatos = new ListaPlatos("", panel);
+		GestionPlatosC mPlatos = new GestionPlatosC("", panel);
 		panel.add(mPlatos, BorderLayout.CENTER);
 		
 	}

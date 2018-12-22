@@ -52,7 +52,7 @@ public class Menu extends JPanel {
 		setBackground(Color.WHITE);
 		setForeground(Color.WHITE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 150, 0, 0};
+		gridBagLayout.columnWidths = new int[]{0, 0, 0, 96, 206, 0, 0};
 		gridBagLayout.rowHeights = new int[]{76, 161, 0, 0, 0, 82, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0, Double.MIN_VALUE};
@@ -83,6 +83,7 @@ public class Menu extends JPanel {
 		add(label, gbc_label);
 		
 		lblNewPedido = new JButton("");
+		lblNewPedido.addActionListener(new LblNewPedidoActionListener());
 		lblNewPedido.setBorderPainted(false);
 		lblNewPedido.setBackground(Color.WHITE);
 		lblNewPedido.setIcon(new ImageIcon(Menu.class.getResource("/recursos/icons8-carrito-de-compras-96.png")));
@@ -127,7 +128,7 @@ public class Menu extends JPanel {
 		lblComidas.addActionListener(new LblComidasActionListener());
 		lblComidas.setBorderPainted(false);
 		lblComidas.setBackground(Color.WHITE);
-		lblComidas.setIcon(new ImageIcon(Menu.class.getResource("/recursos/icons8-comida-96.png")));
+		lblComidas.setIcon(new ImageIcon(Menu.class.getResource("/recursos/icons8-conf-comida-96.png")));
 		GridBagConstraints gbc_lblComidas = new GridBagConstraints();
 		gbc_lblComidas.anchor = GridBagConstraints.SOUTHWEST;
 		gbc_lblComidas.insets = new Insets(0, 0, 5, 5);
@@ -206,6 +207,20 @@ public class Menu extends JPanel {
 				e.printStackTrace();
 			}
 
+		}
+	}
+	
+	private class LblNewPedidoActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			NuevoPedido np;
+			try {
+				np = new NuevoPedido(trab, frameAncestor);
+				frameAncestor.getContentPane().remove(0);
+				frameAncestor.getContentPane().add(np, BorderLayout.CENTER);
+				frameAncestor.revalidate();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	

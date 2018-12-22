@@ -13,38 +13,47 @@ import dominio.Comida;
 
 public class DAOComida {
 	
-	public ArrayList<Comida> getAllDish() throws FileNotFoundException {
-		File file = new File("src/persistencia/Comidas.txt");
-		Scanner datos = new Scanner(file);
-		datos.useDelimiter(";");
-		ArrayList<Comida> dishes = new ArrayList<Comida>();
-		String linea = "";
+	public ArrayList<Comida> getAllDish(){
 		
-		while (datos.hasNext()) {
-			linea = datos.nextLine();
-			
-			Comida com = new Comida();
-			StringTokenizer separador = new StringTokenizer(linea, ";");
-			
-			com.setIdentificador(Integer.parseInt(separador.nextToken()));
-			com.setPestana(separador.nextToken());
-			com.setName(separador.nextToken());
-			com.setIngrediente(separador.nextToken());
-			com.setBwrLact(Boolean.parseBoolean(separador.nextToken()));
-			com.setBwrMar(Boolean.parseBoolean(separador.nextToken()));
-			com.setBwrFSec(Boolean.parseBoolean(separador.nextToken()));
-			com.setBwrGlut(Boolean.parseBoolean(separador.nextToken()));
-			com.setPrecio(Double.parseDouble(separador.nextToken()));
-			com.setRutaImagen(separador.nextToken());
-			
-		    dishes.add(com);
+		File file = new File("src/persistencia/Comidas.txt");
+		Scanner datos;
+		ArrayList<Comida> dishes = new ArrayList<Comida>();
+
+		try {
+			datos = new Scanner(file);
+			datos.useDelimiter(";");
+			String linea = "";
+			while (datos.hasNext()) {
+				linea = datos.nextLine();
+				
+				Comida com = new Comida();
+				StringTokenizer separador = new StringTokenizer(linea, ";");
+				
+				com.setIdentificador(Integer.parseInt(separador.nextToken()));
+				com.setPestana(separador.nextToken());
+				com.setName(separador.nextToken());
+				com.setIngrediente(separador.nextToken());
+				com.setBwrLact(Boolean.parseBoolean(separador.nextToken()));
+				com.setBwrMar(Boolean.parseBoolean(separador.nextToken()));
+				com.setBwrFSec(Boolean.parseBoolean(separador.nextToken()));
+				com.setBwrGlut(Boolean.parseBoolean(separador.nextToken()));
+				com.setPrecio(Double.parseDouble(separador.nextToken()));
+				com.setRutaImagen(separador.nextToken());
+				
+			    dishes.add(com);
+			}
+			datos.close();
+			return dishes;	
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		datos.close();
-		return dishes;	
+		return dishes;
+
 	}
 	public int addDish(Comida com) throws IOException {
 		BufferedWriter file;
-		file = new BufferedWriter(new FileWriter("Comidas.txt",true));
+		file = new BufferedWriter(new FileWriter("src/persistencia/Comidas.txt",true));
 
 		file.write(String.valueOf(com.getIdentificador()) + ";");
 		file.write(com.getPestana() + ";");

@@ -42,7 +42,7 @@ public class DAOTrabajador {
 			return 0;
 		}
 		BufferedWriter file;
-		file = new BufferedWriter(new FileWriter("Trabajadores.txt",true));
+		file = new BufferedWriter(new FileWriter("src/persistencia/Trabajadores.txt",true));
 
 		file.write(trabajador.getName() + ";" + trabajador.getPassword() + ";" + trabajador.getRealName() + ";" 
 						+ trabajador.getLastConnect() + ";" + trabajador.getRutaIcono());

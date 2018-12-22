@@ -1,9 +1,10 @@
-1;Carne;Costillas al vapor con patatas;Patatas, Costillas de cerdo y Cebolla;false;false;false;false;5.40;/recursos/carne.png
-2;Cuchara;Crema de calabazin con zanahaorias;Patata, Leche, Calabazin, Zanahora y Queso;true;false;false;false;2.90;/recursos/leche64.png
-3;Bebida;Agua; ;false;false;false;false;1.20;/recursos/bebida.png
-4;Bebida;Cocacola; ;false;false;false;false;1.80;/recursos/bebida.png
-5;Bebida;Fanta Naranja; ;false;false;false;false;1.80;/recursos/bebida.png
-6;Bebida;Fanta Limon; ;false;false;false;false;1.80;/recursos/bebida.png
-1;Pescado;Pescado prueba;Muchas cosas;false;true;true;false;2.5;/recursos/pescado.png;
-1;Pasta;Pasta prueba;Muchas cosas demasiadas;false;false;false;true;1.2;/recursos/pasta.png;
-1;Carne;Costillas al vapor con patatas;Patatas, Costillas de cerdo y Cebolla;true;false;false;true;0.0;/recursos/carne.png;
+1;Carne;Pasta prueba;Muchas cosas demasiadas;false;false;false;true;0.0;/recursos/pasta.png;
+1;Cuchara;Cocido Madrileño;Garbanzos, muchas verduras;false;false;false;false;0.0;/recursos/pasta.png;
+2;Carne; Prueba de comida; Cosas;true;false;false;false;1.1;/recursos/imagen.png;
+23;Carne;Hamburguesa al Jerez;Carne de cerdo y tenera, Huevo, Tomate, Queso, y Vino de Jerez reducido;true;false;false;true;4.199999999999999;/recursos/carne.png ;
+24;Carne;Hamburguesa al Jerez;Carne de cerdo y tenera, Huevo, Tomate, Queso, y Vino de Jerez reducido;true;false;false;true;4.199999999999999;/recursos/carne.png ;
+25;Carne;Hamburguesa al Jerez;Carne de cerdo y tenera, Huevo, Tomate, Queso, y Vino de Jerez reducido;true;false;false;true;4.199999999999999;/recursos/carne.png ;
+26;Carne;Hamburguesa al Jerez;Carne de cerdo y tenera, Huevo, Tomate, Queso, y Vino de Jerez reducido;true;false;false;true;4.199999999999999;/recursos/carne.png ;
+27;Carne;Hamburguesa al Jerez;Carne de cerdo y tenera, Huevo, Tomate, Queso, y Vino de Jerez reducido;true;false;false;true;4.199999999999999;/recursos/carne.png ;
+28;Carne;Hamburguesa al Jerez;Carne de cerdo y tenera, Huevo, Tomate, Queso, y Vino de Jerez reducido;true;false;false;true;4.199999999999999;/recursos/carne.png ;
+29;Carne;Hamburguesa al Jerez;Carne de cerdo y tenera, Huevo, Tomate, Queso, y Vino de Jerez reducido;true;false;false;true;4.199999999999999;/recursos/carne.png ;
