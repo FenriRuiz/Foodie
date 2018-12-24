@@ -3,6 +3,7 @@ package presentacion;
 import javax.swing.JPanel;
 
 import dominio.Comida;
+import dominio.Pedido;
 
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
@@ -33,7 +34,7 @@ public class NuevoPedidoCLP extends JPanel {
 	private JLabel lblGluten;
 	private JLabel lblPrecio;
 	private JLabel lblPrecios;
-	//private JPanel panel;
+	private JPanel panel;
 	//private Comida com;
 	//private ArrayList<Comida> lcomidas;
 
@@ -44,7 +45,7 @@ public class NuevoPedidoCLP extends JPanel {
 	public NuevoPedidoCLP(Comida comida, JPanel panel2, ArrayList<Comida> listaComidas) {
 		//com = comida;
 		//lcomidas = listaComidas;
-		//panel = panel2;
+		panel = panel2;
 		addMouseListener(new ThisMouseListener());
 		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(48, 153, 232), null, null, null));
 		setBackground(new Color(86, 203, 182));
@@ -189,6 +190,8 @@ public class NuevoPedidoCLP extends JPanel {
 		public void mouseReleased(MouseEvent arg0) {
 			setBorder(new BevelBorder(BevelBorder.RAISED, new Color(48, 153, 232), null, null, null));
 			setBackground(new Color(86, 203, 182));
+			Pedido ped = new Pedido();
+			NuevoPedidoR npr = new NuevoPedidoR(panel, ped);
 			//BorderLayout layout = (BorderLayout) panel.getLayout();
 			//panel.remove(layout.getLayoutComponent(BorderLayout.EAST));
 			//GestionPlatosR plMod = new GestionPlatosR(com, lcomidas);

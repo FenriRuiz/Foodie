@@ -38,6 +38,9 @@ public class NuevoPedido extends JPanel {
 		InfoUsuario infUser = new InfoUsuario(trabajador, frameAncestor);
 		panel.add(infUser, BorderLayout.NORTH);
 		
+		NuevoPedidoR npr = new NuevoPedidoR("", panel);
+		panel.add(npr, BorderLayout.EAST);
+		
 		NuevoPedidoC platos = new NuevoPedidoC("", panel);
 		panel.add(platos, BorderLayout.CENTER);
 
