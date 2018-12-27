@@ -2,13 +2,12 @@ package presentacion;
 
 import javax.swing.JPanel;
 import java.awt.GridLayout;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
+
 
 import javax.swing.JScrollPane;
 
-import dominio.Comida;
 import dominio.Pedido;
+import dominio.Trabajador;
 
 import java.awt.BorderLayout;
 import javax.swing.ScrollPaneConstants;
@@ -31,12 +30,11 @@ public class NuevoPedidoR extends JPanel {
 	private JScrollPane scrollPane;
 	private JPanel panel;
 	private JPanel panel_1;
-	private JLabel lblNewLabel;
+	private JLabel lblPrecioTotal;
 	private JButton btnNewButton;
 	private JLabel lblNewLabel_1;
 	private JLabel label;
 	private JPanel panel_2;
-
 	/**
 	 * Create the panel.
 	 * @param panel2 
@@ -46,8 +44,8 @@ public class NuevoPedidoR extends JPanel {
 	 * @param mMenu 
 	 */
 
-	public NuevoPedidoR(JPanel panel2, Pedido ped) {
-		
+	public NuevoPedidoR(Pedido ped, Trabajador trabajador, JPanel panel2) {
+
 		setLayout(new BorderLayout(0, 0));
 		
 		scrollPane = new JScrollPane();
@@ -76,9 +74,9 @@ public class NuevoPedidoR extends JPanel {
 		panel_2.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		panel_1.add(panel_2, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
-		gbl_panel_2.columnWidths = new int[]{66, 41, 40, 9, 0};
+		gbl_panel_2.columnWidths = new int[]{57, 41, 40, 59, 0};
 		gbl_panel_2.rowHeights = new int[]{18, 0, 0};
-		gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_2.columnWeights = new double[]{1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
@@ -87,21 +85,12 @@ public class NuevoPedidoR extends JPanel {
 		lblNewLabel_1.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-		gbc_lblNewLabel_1.anchor = GridBagConstraints.NORTHWEST;
+		gbc_lblNewLabel_1.anchor = GridBagConstraints.NORTH;
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 0, 5);
 		gbc_lblNewLabel_1.gridx = 1;
 		gbc_lblNewLabel_1.gridy = 1;
 		panel_2.add(lblNewLabel_1, gbc_lblNewLabel_1);
 		lblNewLabel_1.setFont(new Font("Microsoft YaHei UI Light", Font.BOLD, 18));
-		
-		lblNewLabel = new JLabel("43.80");
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.anchor = GridBagConstraints.NORTHWEST;
-		gbc_lblNewLabel.insets = new Insets(0, 0, 0, 5);
-		gbc_lblNewLabel.gridx = 2;
-		gbc_lblNewLabel.gridy = 1;
-		panel_2.add(lblNewLabel, gbc_lblNewLabel);
-		lblNewLabel.setFont(new Font("Microsoft YaHei UI Light", Font.BOLD, 18));
 		
 		label = new JLabel("€");
 		GridBagConstraints gbc_label = new GridBagConstraints();
@@ -110,30 +99,25 @@ public class NuevoPedidoR extends JPanel {
 		gbc_label.gridy = 1;
 		panel_2.add(label, gbc_label);
 		label.setFont(new Font("Microsoft YaHei UI Light", Font.BOLD, 18));
-
-
-		/*try {
-			Comida comida = new Comida();
-			ArrayList<Comida> listaComidas = comida.leerComidas();
-			int i;
-			for(i=0 ; i < listaComidas.size() ; i++) {
-				if(eleccion=="") {
-					NuevoPedidoRLP platillo = new NuevoPedidoRLP(listaComidas.get(i), panel2);
-					panel.add(platillo);
-					panel.repaint();
-					panel.revalidate();
-				}
-				else if(listaComidas.get(i).getPestana().equals(eleccion)) {
-					NuevoPedidoRLP platillo = new NuevoPedidoRLP(listaComidas.get(i), panel2);
-					panel.add(platillo);
-					panel.repaint();
-					panel.revalidate();
-				}
-			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+		
+		int i;
+		double total = 0.0;
+		for(i=0 ; i < ped.getComidasPedido().size() ; i++) {
+			NuevoPedidoRLP platillo = new NuevoPedidoRLP(ped, ped.getComidasPedido().get(i), panel2);
+			panel.add(platillo);
+			panel.repaint();
+			panel.revalidate();
+			total = total + (ped.getComidasPedido().get(i).getComida().getPrecio() * ped.getComidasPedido().get(i).getCantidad());
+		}
+		
+		lblPrecioTotal = new JLabel(String.valueOf(total));
+		GridBagConstraints gbc_lblPrecioTotal = new GridBagConstraints();
+		gbc_lblPrecioTotal.anchor = GridBagConstraints.NORTH;
+		gbc_lblPrecioTotal.insets = new Insets(0, 0, 0, 5);
+		gbc_lblPrecioTotal.gridx = 2;
+		gbc_lblPrecioTotal.gridy = 1;
+		panel_2.add(lblPrecioTotal, gbc_lblPrecioTotal);
+		lblPrecioTotal.setFont(new Font("Microsoft YaHei UI Light", Font.BOLD, 18));
 
 	}
 

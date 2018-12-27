@@ -5,17 +5,18 @@ import java.util.ArrayList;
 public class Pedido {
 	Trabajador trabajador;
 	ArrayList<Carrito> comidasPedido;
+	String estado;
 	
-	public Pedido(Trabajador trabajador, ArrayList<Carrito> comidasPedido) {
+	public Pedido(Trabajador trabajador, ArrayList<Carrito> comidasPedido, String estado) {
 		super();
 		this.trabajador = trabajador;
 		this.comidasPedido = comidasPedido;
+		this.estado = estado;
 	}
 	
 	public Pedido() {
 		// TODO Auto-generated constructor stub
 	}
-
 	public Trabajador getTrabajador() {
 		return trabajador;
 	}
@@ -27,6 +28,12 @@ public class Pedido {
 	}
 	public void setComidasPedido(ArrayList<Carrito> comidasPedido) {
 		this.comidasPedido = comidasPedido;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 	
 }

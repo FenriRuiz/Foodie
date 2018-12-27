@@ -1,6 +1,7 @@
 package presentacion;
 
 import javax.swing.JPanel;
+
 import java.awt.Color;
 
 import java.awt.GridBagLayout;
@@ -9,12 +10,15 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.SwingConstants;
 
-import dominio.Comida;
+import dominio.Carrito;
+import dominio.Pedido;
 
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class NuevoPedidoRLP extends JPanel {
 	/**
@@ -29,12 +33,17 @@ public class NuevoPedidoRLP extends JPanel {
 	private JLabel lblValor;
 	private JButton btnMenos;
 	private JButton btnAdd;
-
-
+	private Pedido pedido;
+	private Carrito carrito;
+	@SuppressWarnings("unused")
+	private JPanel panel;
 	/**
 	 * Create the panel.
 	 */
-	public NuevoPedidoRLP(Comida com, JPanel ancestor) {
+	public NuevoPedidoRLP(Pedido ped, Carrito carr, JPanel ancestor) {
+		pedido = ped;
+		carrito = carr;
+		panel = ancestor;
 		setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		
 		setBackground(new Color(60, 179, 113));
@@ -45,7 +54,7 @@ public class NuevoPedidoRLP extends JPanel {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		lblNombre = new JLabel(com.getName());
+		lblNombre = new JLabel(carr.getComida().getName());
 		lblNombre.setFont(new Font("Microsoft YaHei UI Light", Font.BOLD, 16));
 		lblNombre.setHorizontalAlignment(SwingConstants.LEFT);
 		GridBagConstraints gbc_lblNombre = new GridBagConstraints();
@@ -65,7 +74,7 @@ public class NuevoPedidoRLP extends JPanel {
 		gbc_lblx.gridy = 1;
 		add(lblx, gbc_lblx);
 		
-		lblCantidad = new JLabel("1");
+		lblCantidad = new JLabel(String.valueOf(carr.getCantidad()));
 		lblCantidad.setFont(new Font("Microsoft YaHei UI Light", Font.BOLD, 15));
 		GridBagConstraints gbc_lblCantidad = new GridBagConstraints();
 		gbc_lblCantidad.anchor = GridBagConstraints.WEST;
@@ -84,7 +93,7 @@ public class NuevoPedidoRLP extends JPanel {
 		gbc_lblPrecio.gridy = 2;
 		add(lblPrecio, gbc_lblPrecio);
 		
-		lblValor = new JLabel(String.valueOf(com.getPrecio()));
+		lblValor = new JLabel(String.valueOf(carr.getComida().getPrecio()));
 		lblValor.setFont(new Font("Microsoft YaHei UI Light", Font.BOLD, 15));
 		GridBagConstraints gbc_lblValor = new GridBagConstraints();
 		gbc_lblValor.anchor = GridBagConstraints.EAST;
@@ -103,6 +112,7 @@ public class NuevoPedidoRLP extends JPanel {
 		add(lblNewLabel, gbc_lblNewLabel);
 		
 		btnAdd = new JButton("");
+		btnAdd.addActionListener(new BtnAddActionListener());
 		btnAdd.setBackground(Color.WHITE);
 		btnAdd.setIcon(new ImageIcon(NuevoPedidoRLP.class.getResource("/recursos/icons8-plus-math-30.png")));
 		GridBagConstraints gbc_btnAdd = new GridBagConstraints();
@@ -113,6 +123,7 @@ public class NuevoPedidoRLP extends JPanel {
 		add(btnAdd, gbc_btnAdd);
 		
 		btnMenos = new JButton("");
+		btnMenos.addActionListener(new BtnMenosActionListener());
 		btnMenos.setBackground(Color.WHITE);
 		btnMenos.setIcon(new ImageIcon(NuevoPedidoRLP.class.getResource("/recursos/icons8-subtract-30.png")));
 		GridBagConstraints gbc_btnMenos = new GridBagConstraints();
@@ -123,4 +134,37 @@ public class NuevoPedidoRLP extends JPanel {
 
 	}
 
+	private class BtnAddActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+
+			carrito.setCantidad(carrito.getCantidad()+1);
+			lblCantidad.setText(String.valueOf(carrito.getCantidad()));
+			
+			repaint();
+			revalidate();
+		}
+	}
+	private class BtnMenosActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			if(carrito.getCantidad()<=1) {
+				//remove(pedido.getComidasPedido().indexOf(carrito)+1);
+				removeAll();
+				pedido.getComidasPedido().remove(carrito);
+				//NuevoPedidoR npr = new NuevoPedidoR(pedido, pedido.getTrabajador(), panel);
+				//BorderLayout layout = (BorderLayout) panel.getLayout();
+				//panel.remove(panel);
+				//layout.getLayoutComponent(BorderLayout.EAST)
+				//panel.add(npr, BorderLayout.EAST);
+
+			}
+			else {
+			
+				carrito.setCantidad(carrito.getCantidad()-1);
+				lblCantidad.setText(String.valueOf(carrito.getCantidad()));
+				
+			}
+			repaint();
+			revalidate();
+		}
+	}
 }

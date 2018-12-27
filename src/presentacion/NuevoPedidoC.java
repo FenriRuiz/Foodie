@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import javax.swing.JScrollPane;
 
 import dominio.Comida;
+import dominio.Pedido;
+import dominio.Trabajador;
 
 import java.awt.BorderLayout;
 import javax.swing.ScrollPaneConstants;
@@ -30,7 +32,7 @@ public class NuevoPedidoC extends JPanel {
 	 * @param mMenu 
 	 */
 
-	public NuevoPedidoC(String eleccion, JPanel panel2) {
+	public NuevoPedidoC(Pedido pedido, Trabajador trab, String eleccion, JPanel panel2) {
 		
 		setLayout(new BorderLayout(0, 0));
 		
@@ -44,19 +46,20 @@ public class NuevoPedidoC extends JPanel {
 		panel.setLayout(new GridLayout(0, 1, 0, 0));
 
 
+		
 		try {
 			Comida comida = new Comida();
 			ArrayList<Comida> listaComidas = comida.leerComidas();
 			int i;
 			for(i=0 ; i < listaComidas.size() ; i++) {
 				if(eleccion=="") {
-					NuevoPedidoCLP platillo = new NuevoPedidoCLP(listaComidas.get(i), panel2, listaComidas);
+					NuevoPedidoCLP platillo = new NuevoPedidoCLP(pedido, trab, listaComidas.get(i), panel2, listaComidas);
 					panel.add(platillo);
 					panel.repaint();
 					panel.revalidate();
 				}
 				else if(listaComidas.get(i).getPestana().equals(eleccion)) {
-					NuevoPedidoCLP platillo = new NuevoPedidoCLP(listaComidas.get(i), panel2, listaComidas);
+					NuevoPedidoCLP platillo = new NuevoPedidoCLP(pedido, trab, listaComidas.get(i), panel2, listaComidas);
 					panel.add(platillo);
 					panel.repaint();
 					panel.revalidate();

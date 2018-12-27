@@ -2,8 +2,10 @@ package presentacion;
 
 import javax.swing.JPanel;
 
+import dominio.Carrito;
 import dominio.Comida;
 import dominio.Pedido;
+import dominio.Trabajador;
 
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
@@ -11,6 +13,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import java.awt.BorderLayout;
 //import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.border.BevelBorder;
@@ -35,24 +38,29 @@ public class NuevoPedidoCLP extends JPanel {
 	private JLabel lblPrecio;
 	private JLabel lblPrecios;
 	private JPanel panel;
-	//private Comida com;
-	//private ArrayList<Comida> lcomidas;
-
+	private Trabajador trabajador;
+	private ArrayList<Carrito> comidasPedido;
+	private Pedido pedido;
+	private Comida com;
 	/**
 	 * Create the panel.
 	 * @param panel2 
 	 */
-	public NuevoPedidoCLP(Comida comida, JPanel panel2, ArrayList<Comida> listaComidas) {
-		//com = comida;
-		//lcomidas = listaComidas;
+	public NuevoPedidoCLP(Pedido ped, Trabajador trab, Comida comida, JPanel panel2, ArrayList<Comida> listaComidas) {
+		comidasPedido = ped.getComidasPedido();
+		pedido = ped;
+		com = comida;
+		
+		trabajador = trab;
 		panel = panel2;
+		
 		addMouseListener(new ThisMouseListener());
 		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(48, 153, 232), null, null, null));
 		setBackground(new Color(86, 203, 182));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 77, 75, 76, 75, 69, 71, 0, 0};
 		gridBagLayout.rowHeights = new int[]{37, 84, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
@@ -70,7 +78,7 @@ public class NuevoPedidoCLP extends JPanel {
 		lblNombre.setFont(new Font("Microsoft YaHei UI Light", Font.BOLD, 17));
 		GridBagConstraints gbc_lblNombre = new GridBagConstraints();
 		gbc_lblNombre.anchor = GridBagConstraints.SOUTHWEST;
-		gbc_lblNombre.gridwidth = 4;
+		gbc_lblNombre.gridwidth = 7;
 		gbc_lblNombre.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNombre.gridx = 3;
 		gbc_lblNombre.gridy = 0;
@@ -79,19 +87,18 @@ public class NuevoPedidoCLP extends JPanel {
 		lblPrecio = new JLabel("Precio:");
 		lblPrecio.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 17));
 		GridBagConstraints gbc_lblPrecio = new GridBagConstraints();
-		gbc_lblPrecio.gridheight = 2;
+		gbc_lblPrecio.anchor = GridBagConstraints.EAST;
 		gbc_lblPrecio.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPrecio.gridx = 8;
-		gbc_lblPrecio.gridy = 0;
+		gbc_lblPrecio.gridy = 1;
 		add(lblPrecio, gbc_lblPrecio);
 		
 		lblPrecios = new JLabel(String.valueOf(comida.getPrecio()) + " €");
 		lblPrecios.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 16));
 		GridBagConstraints gbc_lblPrecios = new GridBagConstraints();
-		gbc_lblPrecios.gridheight = 2;
 		gbc_lblPrecios.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPrecios.gridx = 9;
-		gbc_lblPrecios.gridy = 0;
+		gbc_lblPrecios.gridy = 1;
 		add(lblPrecios, gbc_lblPrecios);
 		
 		lblIngrediente = new JLabel("Ingredientes:");
@@ -190,14 +197,28 @@ public class NuevoPedidoCLP extends JPanel {
 		public void mouseReleased(MouseEvent arg0) {
 			setBorder(new BevelBorder(BevelBorder.RAISED, new Color(48, 153, 232), null, null, null));
 			setBackground(new Color(86, 203, 182));
-			Pedido ped = new Pedido();
-			NuevoPedidoR npr = new NuevoPedidoR(panel, ped);
-			//BorderLayout layout = (BorderLayout) panel.getLayout();
-			//panel.remove(layout.getLayoutComponent(BorderLayout.EAST));
-			//GestionPlatosR plMod = new GestionPlatosR(com, lcomidas);
-			//panel.add(plMod, BorderLayout.EAST);
-			//panel.repaint();
-			//panel.revalidate();
+			BorderLayout layout = (BorderLayout) panel.getLayout();
+			panel.remove(layout.getLayoutComponent(BorderLayout.EAST));
+
+			Carrito carr = new Carrito(com, 1);
+			int i;
+			int existe = 0;
+			for(i=0; i < comidasPedido.size(); i++) {
+				if(comidasPedido.get(i).getComida().getName().equals(carr.getComida().getName())) {
+					comidasPedido.get(i).setCantidad(comidasPedido.get(i).getCantidad()+1);
+					existe = 1;
+				}
+			}
+			if(comidasPedido.size()==0 || existe == 0) {
+				comidasPedido.add(carr);
+			}
+			//pedido.setComidasPedido(comidasPedido);
+			
+			NuevoPedidoR npr = new NuevoPedidoR(pedido, trabajador, panel);
+			panel.add(npr, BorderLayout.EAST);
+			panel.repaint();
+			panel.revalidate();
+
 		}
 	}
 }

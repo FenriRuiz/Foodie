@@ -14,6 +14,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.border.SoftBevelBorder;
 
+import dominio.Pedido;
 import dominio.Trabajador;
 
 import javax.swing.border.BevelBorder;
@@ -39,16 +40,18 @@ public class NuevoPedidoL extends JPanel {
 	private Trabajador trab;
 	private JButton btnCuchara;
 	private JPanel panel;
+	private Pedido ped;
 	/**
 	 * Create the panel.
 	 * @param frameAncestor 
 	 * @param trabajador 
 	 * @param panel2 
 	 */
-	public NuevoPedidoL(Trabajador trabajador, JFrame frame, JPanel panel2) {
+	public NuevoPedidoL(Pedido pedido, Trabajador trabajador, JFrame frame, JPanel panel2) {
 		panel = panel2;
 		trab = trabajador;
 		frameAncestor = frame;
+		ped = pedido;
 		setBackground(new Color(78, 190, 107));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};
@@ -188,7 +191,7 @@ public class NuevoPedidoL extends JPanel {
 			btnPostres.setBackground(new Color(78, 190, 107));
 			BorderLayout layout = (BorderLayout) panel.getLayout();
 			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
-			NuevoPedidoC lpCarne = new NuevoPedidoC("Carne", panel);
+			NuevoPedidoC lpCarne = new NuevoPedidoC(ped,trab,"Carne", panel);
 			panel.add(lpCarne, BorderLayout.CENTER);
 			panel.repaint();
 			panel.revalidate();
@@ -206,7 +209,7 @@ public class NuevoPedidoL extends JPanel {
 			btnPostres.setBackground(new Color(78, 190, 107));
 			BorderLayout layout = (BorderLayout) panel.getLayout();
 			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
-			NuevoPedidoC lpMod = new NuevoPedidoC("Pescado", panel);
+			NuevoPedidoC lpMod = new NuevoPedidoC(ped,trab,"Pescado", panel);
 			panel.add(lpMod, BorderLayout.CENTER);
 			panel.repaint();
 			panel.revalidate();
@@ -223,7 +226,7 @@ public class NuevoPedidoL extends JPanel {
 			btnPostres.setBackground(new Color(78, 190, 107));
 			BorderLayout layout = (BorderLayout) panel.getLayout();
 			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
-			NuevoPedidoC lpMod = new NuevoPedidoC("Pasta", panel);
+			NuevoPedidoC lpMod = new NuevoPedidoC(ped,trab,"Pasta", panel);
 			panel.add(lpMod, BorderLayout.CENTER);
 			panel.repaint();
 			panel.revalidate();
@@ -240,7 +243,7 @@ public class NuevoPedidoL extends JPanel {
 			btnPostres.setBackground(new Color(78, 190, 107));
 			BorderLayout layout = (BorderLayout) panel.getLayout();
 			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
-			NuevoPedidoC lpMod = new NuevoPedidoC("Vegano", panel);
+			NuevoPedidoC lpMod = new NuevoPedidoC(ped,trab,"Vegano", panel);
 			panel.add(lpMod, BorderLayout.CENTER);
 			panel.repaint();
 			panel.revalidate();
@@ -257,7 +260,7 @@ public class NuevoPedidoL extends JPanel {
 			btnPostres.setBackground(new Color(78, 190, 107));
 			BorderLayout layout = (BorderLayout) panel.getLayout();
 			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
-			NuevoPedidoC lpMod = new NuevoPedidoC("Cuchara", panel);
+			NuevoPedidoC lpMod = new NuevoPedidoC(ped,trab,"Cuchara", panel);
 			panel.add(lpMod, BorderLayout.CENTER);
 			panel.repaint();
 			panel.revalidate();
@@ -275,7 +278,7 @@ public class NuevoPedidoL extends JPanel {
 			btnPostres.setBackground(new Color(78, 190, 107));
 			BorderLayout layout = (BorderLayout) panel.getLayout();
 			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
-			NuevoPedidoC lpMod = new NuevoPedidoC("Bebida", panel);
+			NuevoPedidoC lpMod = new NuevoPedidoC(ped,trab,"Bebida", panel);
 			panel.add(lpMod, BorderLayout.CENTER);
 			panel.repaint();
 			panel.revalidate();
@@ -292,7 +295,7 @@ public class NuevoPedidoL extends JPanel {
 			btnPostres.setBackground(new Color(82, 155, 72));
 			BorderLayout layout = (BorderLayout) panel.getLayout();
 			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
-			NuevoPedidoC lpMod = new NuevoPedidoC("Postre", panel);
+			NuevoPedidoC lpMod = new NuevoPedidoC(ped,trab,"Postre", panel);
 			panel.add(lpMod, BorderLayout.CENTER);
 			panel.repaint();
 			panel.revalidate();
