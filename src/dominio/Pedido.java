@@ -6,12 +6,20 @@ public class Pedido {
 	Trabajador trabajador;
 	ArrayList<Carrito> comidasPedido;
 	String estado;
+	String ubicacion;
 	
 	public Pedido(Trabajador trabajador, ArrayList<Carrito> comidasPedido, String estado) {
 		super();
 		this.trabajador = trabajador;
 		this.comidasPedido = comidasPedido;
 		this.estado = estado;
+	}
+	public Pedido(Trabajador trabajador, ArrayList<Carrito> comidasPedido, String estado, String ubicacion) {
+		super();
+		this.trabajador = trabajador;
+		this.comidasPedido = comidasPedido;
+		this.estado = estado;
+		this.ubicacion = ubicacion;
 	}
 	
 	public Pedido() {

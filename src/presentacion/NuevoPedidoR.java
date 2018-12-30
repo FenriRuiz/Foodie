@@ -21,6 +21,9 @@ import java.awt.Component;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.awt.event.ActionEvent;
 
 public class NuevoPedidoR extends JPanel {
 	/**
@@ -31,10 +34,13 @@ public class NuevoPedidoR extends JPanel {
 	private JPanel panel;
 	private JPanel panel_1;
 	private JLabel lblPrecioTotal;
-	private JButton btnNewButton;
+	private JButton btnPagar;
 	private JLabel lblNewLabel_1;
 	private JLabel label;
 	private JPanel panel_2;
+	private ArrayList<Pedido> listaPedido;
+	private Pedido pedido;
+	
 	/**
 	 * Create the panel.
 	 * @param panel2 
@@ -44,7 +50,10 @@ public class NuevoPedidoR extends JPanel {
 	 * @param mMenu 
 	 */
 
-	public NuevoPedidoR(Pedido ped, Trabajador trabajador, JPanel panel2) {
+	public NuevoPedidoR(Pedido ped, Trabajador trabajador, JPanel panel2, ArrayList<Pedido> listaPed) {
+		listaPedido = listaPed;
+
+		pedido = ped;
 
 		setLayout(new BorderLayout(0, 0));
 		
@@ -61,15 +70,17 @@ public class NuevoPedidoR extends JPanel {
 		add(panel_1, BorderLayout.SOUTH);
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
-		btnNewButton = new JButton("Realizar Pedido");
-		btnNewButton.setBackground(new Color(0, 250, 154));
-		btnNewButton.setHorizontalTextPosition(SwingConstants.RIGHT);
-		btnNewButton.setHorizontalAlignment(SwingConstants.RIGHT);
-		btnNewButton.setIcon(new ImageIcon(NuevoPedidoR.class.getResource("/recursos/icons8-derecha-en-círculo-2-64.png")));
-		btnNewButton.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 16));
-		panel_1.add(btnNewButton, BorderLayout.EAST);
+		btnPagar = new JButton("Pagar Pedido");
+		btnPagar.addActionListener(new BtnPagarActionListener());
+		btnPagar.setBackground(new Color(0, 250, 154));
+		btnPagar.setHorizontalTextPosition(SwingConstants.RIGHT);
+		btnPagar.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnPagar.setIcon(new ImageIcon(NuevoPedidoR.class.getResource("/recursos/icons8-derecha-en-círculo-2-64.png")));
+		btnPagar.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 16));
+		panel_1.add(btnPagar, BorderLayout.EAST);
 		
 		panel_2 = new JPanel();
+		panel_2.setBackground(Color.WHITE);
 		panel_2.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		panel_2.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		panel_1.add(panel_2, BorderLayout.CENTER);
@@ -121,4 +132,11 @@ public class NuevoPedidoR extends JPanel {
 
 	}
 
+	private class BtnPagarActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+
+			listaPedido.add(pedido);
+
+		}
+	}
 }

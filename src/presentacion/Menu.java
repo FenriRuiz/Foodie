@@ -2,6 +2,7 @@ package presentacion;
 
 import javax.swing.JPanel;
 
+import dominio.Pedido;
 import dominio.Trabajador;
 
 import java.awt.GridBagLayout;
@@ -18,6 +19,7 @@ import javax.swing.JFrame;
 
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 
@@ -41,12 +43,14 @@ public class Menu extends JPanel {
 	private JLabel label_1;
 	private JFrame frameAncestor;
 	private Trabajador trab;
+	private ArrayList<Pedido> listaPedidos;
 
 	/**
 	 * Create the panel.
 	 * @param frame 
 	 */
 	public Menu(Trabajador trabajador, JFrame frameAn) {
+		listaPedidos = new ArrayList<Pedido>();
 		frameAncestor=frameAn;
 		trab = trabajador;
 		setBackground(Color.WHITE);
@@ -83,6 +87,7 @@ public class Menu extends JPanel {
 		add(label, gbc_label);
 		
 		lblNewPedido = new JButton("");
+		lblNewPedido.setToolTipText("");
 		lblNewPedido.addActionListener(new LblNewPedidoActionListener());
 		lblNewPedido.setBorderPainted(false);
 		lblNewPedido.setBackground(Color.WHITE);
@@ -102,6 +107,7 @@ public class Menu extends JPanel {
 		add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
 		lblPedidos = new JButton("");
+		lblPedidos.setToolTipText("");
 		lblPedidos.addActionListener(new LblPedidosActionListener());
 		lblPedidos.setBorderPainted(false);
 		lblPedidos.setBackground(Color.WHITE);
@@ -114,6 +120,8 @@ public class Menu extends JPanel {
 		add(lblPedidos, gbc_lblPedidos);
 		
 		lblHabituales = new JButton("");
+		lblHabituales.setToolTipText("Disponible en la proxima actualización");
+		lblHabituales.setEnabled(false);
 		lblHabituales.setBorderPainted(false);
 		lblHabituales.setBackground(Color.WHITE);
 		lblHabituales.setIcon(new ImageIcon(Menu.class.getResource("/recursos/icons8-llamada-de-conferencia-96.png")));
@@ -125,6 +133,7 @@ public class Menu extends JPanel {
 		add(lblHabituales, gbc_lblHabituales);
 		
 		lblComidas = new JButton("");
+		lblComidas.setToolTipText("");
 		lblComidas.addActionListener(new LblComidasActionListener());
 		lblComidas.setBorderPainted(false);
 		lblComidas.setBackground(Color.WHITE);
@@ -184,6 +193,11 @@ public class Menu extends JPanel {
 
 	private class LblPedidosActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
+			UltimosPedidos up;
+			up = new UltimosPedidos(trab, frameAncestor, listaPedidos);
+			frameAncestor.getContentPane().remove(0);
+			frameAncestor.getContentPane().add(up, BorderLayout.CENTER);
+			frameAncestor.revalidate();
 		}
 	}
 	
@@ -214,7 +228,7 @@ public class Menu extends JPanel {
 		public void actionPerformed(ActionEvent arg0) {
 			NuevoPedido np;
 			try {
-				np = new NuevoPedido(trab, frameAncestor);
+				np = new NuevoPedido(trab, frameAncestor, listaPedidos);
 				frameAncestor.getContentPane().remove(0);
 				frameAncestor.getContentPane().add(np, BorderLayout.CENTER);
 				frameAncestor.revalidate();

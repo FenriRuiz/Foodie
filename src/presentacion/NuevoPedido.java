@@ -25,7 +25,7 @@ public class NuevoPedido extends JPanel {
 	 * Create the panel.
 	 * @throws FileNotFoundException 
 	 */
-	public NuevoPedido(Trabajador trabajador, JFrame frameAncestor) throws FileNotFoundException {
+	public NuevoPedido(Trabajador trabajador, JFrame frameAncestor, ArrayList<Pedido> listaPedidos) throws FileNotFoundException {
 		setLayout(new BorderLayout(0, 0));
 		ArrayList<Carrito> comidasPedido = new ArrayList<Carrito>();
 		Pedido pedido = new Pedido(trabajador,comidasPedido,"Sin pagar");
@@ -37,16 +37,16 @@ public class NuevoPedido extends JPanel {
 		//ArrayList<Comida> listaComidas = comida.leerComidas();
 		panel.setLayout(new BorderLayout(0, 0));
 		
-		NuevoPedidoL npi = new NuevoPedidoL(pedido,trabajador,frameAncestor, panel);
+		NuevoPedidoL npi = new NuevoPedidoL(pedido,trabajador,frameAncestor, panel, listaPedidos);
 		panel.add(npi, BorderLayout.WEST);
 		
 		InfoUsuario infUser = new InfoUsuario(trabajador, frameAncestor);
 		panel.add(infUser, BorderLayout.NORTH);
 		
-		NuevoPedidoR npr = new NuevoPedidoR(pedido, trabajador, panel);
+		NuevoPedidoR npr = new NuevoPedidoR(pedido, trabajador, panel, listaPedidos);
 		panel.add(npr, BorderLayout.EAST);
 		
-		NuevoPedidoC platos = new NuevoPedidoC(pedido,trabajador,"", panel);
+		NuevoPedidoC platos = new NuevoPedidoC(pedido,trabajador,"", panel, listaPedidos);
 		panel.add(platos, BorderLayout.CENTER);
 
 	}

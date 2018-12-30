@@ -32,7 +32,7 @@ public class NuevoPedidoC extends JPanel {
 	 * @param mMenu 
 	 */
 
-	public NuevoPedidoC(Pedido pedido, Trabajador trab, String eleccion, JPanel panel2) {
+	public NuevoPedidoC(Pedido pedido, Trabajador trab, String eleccion, JPanel panel2, ArrayList<Pedido> listaPed) {
 		
 		setLayout(new BorderLayout(0, 0));
 		
@@ -53,13 +53,13 @@ public class NuevoPedidoC extends JPanel {
 			int i;
 			for(i=0 ; i < listaComidas.size() ; i++) {
 				if(eleccion=="") {
-					NuevoPedidoCLP platillo = new NuevoPedidoCLP(pedido, trab, listaComidas.get(i), panel2, listaComidas);
+					NuevoPedidoCLP platillo = new NuevoPedidoCLP(pedido, trab, listaComidas.get(i), panel2, listaComidas, listaPed);
 					panel.add(platillo);
 					panel.repaint();
 					panel.revalidate();
 				}
 				else if(listaComidas.get(i).getPestana().equals(eleccion)) {
-					NuevoPedidoCLP platillo = new NuevoPedidoCLP(pedido, trab, listaComidas.get(i), panel2, listaComidas);
+					NuevoPedidoCLP platillo = new NuevoPedidoCLP(pedido, trab, listaComidas.get(i), panel2, listaComidas, listaPed);
 					panel.add(platillo);
 					panel.repaint();
 					panel.revalidate();

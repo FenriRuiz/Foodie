@@ -40,16 +40,18 @@ public class NuevoPedidoCLP extends JPanel {
 	private JPanel panel;
 	private Trabajador trabajador;
 	private ArrayList<Carrito> comidasPedido;
+	private ArrayList<Pedido> listaPedido;
 	private Pedido pedido;
 	private Comida com;
 	/**
 	 * Create the panel.
 	 * @param panel2 
 	 */
-	public NuevoPedidoCLP(Pedido ped, Trabajador trab, Comida comida, JPanel panel2, ArrayList<Comida> listaComidas) {
+	public NuevoPedidoCLP(Pedido ped, Trabajador trab, Comida comida, JPanel panel2, ArrayList<Comida> listaComidas, ArrayList<Pedido> listaPed) {
 		comidasPedido = ped.getComidasPedido();
 		pedido = ped;
 		com = comida;
+		listaPedido = listaPed;
 		
 		trabajador = trab;
 		panel = panel2;
@@ -214,7 +216,7 @@ public class NuevoPedidoCLP extends JPanel {
 			}
 			//pedido.setComidasPedido(comidasPedido);
 			
-			NuevoPedidoR npr = new NuevoPedidoR(pedido, trabajador, panel);
+			NuevoPedidoR npr = new NuevoPedidoR(pedido, trabajador, panel, listaPedido);
 			panel.add(npr, BorderLayout.EAST);
 			panel.repaint();
 			panel.revalidate();
