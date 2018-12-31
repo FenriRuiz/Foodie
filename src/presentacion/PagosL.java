@@ -73,6 +73,7 @@ public class PagosL extends JPanel {
 		panel.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		panel_1 = new JPanel();
+		panel_1.setBackground(Color.WHITE);
 		add(panel_1, BorderLayout.SOUTH);
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
@@ -83,9 +84,9 @@ public class PagosL extends JPanel {
 		panel_1.add(panel_2, BorderLayout.EAST);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
 		gbl_panel_2.columnWidths = new int[]{46, 41, 40, 60, 0, 0};
-		gbl_panel_2.rowHeights = new int[]{0, 0};
+		gbl_panel_2.rowHeights = new int[]{24, 0, 0};
 		gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_panel_2.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
 		lblNewLabel_1 = new JLabel("Total:");
@@ -95,7 +96,7 @@ public class PagosL extends JPanel {
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 0, 5);
 		gbc_lblNewLabel_1.gridx = 1;
-		gbc_lblNewLabel_1.gridy = 0;
+		gbc_lblNewLabel_1.gridy = 1;
 		panel_2.add(lblNewLabel_1, gbc_lblNewLabel_1);
 		lblNewLabel_1.setFont(new Font("Microsoft YaHei UI Light", Font.BOLD, 18));
 		
@@ -104,7 +105,7 @@ public class PagosL extends JPanel {
 		gbc_label.insets = new Insets(0, 0, 0, 5);
 		gbc_label.anchor = GridBagConstraints.WEST;
 		gbc_label.gridx = 3;
-		gbc_label.gridy = 0;
+		gbc_label.gridy = 1;
 		panel_2.add(label, gbc_label);
 		label.setFont(new Font("Microsoft YaHei UI Light", Font.BOLD, 18));
 		
@@ -122,7 +123,7 @@ public class PagosL extends JPanel {
 		GridBagConstraints gbc_lblPrecioTotal = new GridBagConstraints();
 		gbc_lblPrecioTotal.insets = new Insets(0, 0, 0, 5);
 		gbc_lblPrecioTotal.gridx = 2;
-		gbc_lblPrecioTotal.gridy = 0;
+		gbc_lblPrecioTotal.gridy = 1;
 		panel_2.add(lblPrecioTotal, gbc_lblPrecioTotal);
 		lblPrecioTotal.setFont(new Font("Microsoft YaHei UI Light", Font.BOLD, 18));
 		

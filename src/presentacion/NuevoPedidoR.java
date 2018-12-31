@@ -139,8 +139,7 @@ public class NuevoPedidoR extends JPanel {
 
 	private class BtnPagarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			pedido.setEstado("SinPagar");
-			listaPedido.add(pedido);
+
 			Pagos pay = new Pagos(trab, pedido, listaPedido, principal);
 			principal.getContentPane().remove(0);
 			principal.getContentPane().add(pay, BorderLayout.CENTER);

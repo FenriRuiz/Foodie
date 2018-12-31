@@ -30,6 +30,9 @@ public class Pagos extends JPanel {
 		
 		PagosL pl = new PagosL(pedido, trabajador, panel, listaPedido, antecesor);
 		panel.add(pl, BorderLayout.WEST);
+		
+		PagosC pc = new PagosC(pedido, trabajador, listaPedido, antecesor);
+		panel.add(pc, BorderLayout.CENTER);
 
 	}
 

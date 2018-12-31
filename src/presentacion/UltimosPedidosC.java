@@ -34,6 +34,7 @@ public class UltimosPedidosC extends JPanel {
 	private Trabajador trabajador;
 	private ArrayList<Pedido> listaPedidos;
 	private Pedido pedido;
+	private JButton btnNewButton;
 
 	/**
 	 * Create the panel.
@@ -63,6 +64,14 @@ public class UltimosPedidosC extends JPanel {
 		
 		panel_1.add(btnAtras, BorderLayout.WEST);
 		
+		btnNewButton = new JButton("Completado");
+		btnNewButton.setBackground(Color.WHITE);
+		btnNewButton.setIcon(new ImageIcon(UltimosPedidosC.class.getResource("/recursos/comprobado.png")));
+		btnNewButton.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 15));
+		btnNewButton.addActionListener(new BtnNewButtonActionListener());
+		btnNewButton.setBorderPainted(false);
+		panel_1.add(btnNewButton, BorderLayout.EAST);
+		
 		scrollPane = new JScrollPane();
 		
 		panel.add(scrollPane, BorderLayout.CENTER);
@@ -85,6 +94,11 @@ public class UltimosPedidosC extends JPanel {
 			anterior.getContentPane().remove(0);
 			anterior.getContentPane().add(menu, BorderLayout.CENTER);
 			anterior.revalidate();
+		}
+	}
+	private class BtnNewButtonActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			pedido.setEstado("Entregado");
 		}
 	}
 }
