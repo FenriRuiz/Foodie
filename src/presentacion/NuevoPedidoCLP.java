@@ -12,6 +12,8 @@ import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+
 import java.awt.Font;
 import java.awt.BorderLayout;
 //import java.awt.BorderLayout;
@@ -43,12 +45,14 @@ public class NuevoPedidoCLP extends JPanel {
 	private ArrayList<Pedido> listaPedido;
 	private Pedido pedido;
 	private Comida com;
+	private JFrame principal;
 	/**
 	 * Create the panel.
 	 * @param panel2 
 	 */
-	public NuevoPedidoCLP(Pedido ped, Trabajador trab, Comida comida, JPanel panel2, ArrayList<Comida> listaComidas, ArrayList<Pedido> listaPed) {
+	public NuevoPedidoCLP(Pedido ped, Trabajador trab, Comida comida, JPanel panel2, ArrayList<Comida> listaComidas, ArrayList<Pedido> listaPed, JFrame prin) {
 		comidasPedido = ped.getComidasPedido();
+		principal = prin;
 		pedido = ped;
 		com = comida;
 		listaPedido = listaPed;
@@ -216,7 +220,7 @@ public class NuevoPedidoCLP extends JPanel {
 			}
 			//pedido.setComidasPedido(comidasPedido);
 			
-			NuevoPedidoR npr = new NuevoPedidoR(pedido, trabajador, panel, listaPedido);
+			NuevoPedidoR npr = new NuevoPedidoR(pedido, trabajador, panel, listaPedido, principal);
 			panel.add(npr, BorderLayout.EAST);
 			panel.repaint();
 			panel.revalidate();

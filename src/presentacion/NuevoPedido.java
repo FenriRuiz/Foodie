@@ -3,7 +3,6 @@ package presentacion;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import dominio.Carrito;
 import dominio.Pedido;
 //import dominio.Comida;
 import dominio.Trabajador;
@@ -25,10 +24,10 @@ public class NuevoPedido extends JPanel {
 	 * Create the panel.
 	 * @throws FileNotFoundException 
 	 */
-	public NuevoPedido(Trabajador trabajador, JFrame frameAncestor, ArrayList<Pedido> listaPedidos) throws FileNotFoundException {
+	public NuevoPedido(Trabajador trabajador, JFrame frameAncestor, ArrayList<Pedido> listaPedidos, Pedido pedido) throws FileNotFoundException {
 		setLayout(new BorderLayout(0, 0));
-		ArrayList<Carrito> comidasPedido = new ArrayList<Carrito>();
-		Pedido pedido = new Pedido(trabajador,comidasPedido,"Sin pagar");
+		//ArrayList<Carrito> comidasPedido = new ArrayList<Carrito>();
+		//Pedido pedido = new Pedido(trabajador,comidasPedido,"Sin pagar");
 		
 		JPanel panel = new JPanel();
 		add(panel);
@@ -40,13 +39,13 @@ public class NuevoPedido extends JPanel {
 		NuevoPedidoL npi = new NuevoPedidoL(pedido,trabajador,frameAncestor, panel, listaPedidos);
 		panel.add(npi, BorderLayout.WEST);
 		
-		InfoUsuario infUser = new InfoUsuario(trabajador, frameAncestor);
+		InfoUsuario infUser = new InfoUsuario(trabajador, frameAncestor, listaPedidos, pedido);
 		panel.add(infUser, BorderLayout.NORTH);
 		
-		NuevoPedidoR npr = new NuevoPedidoR(pedido, trabajador, panel, listaPedidos);
+		NuevoPedidoR npr = new NuevoPedidoR(pedido, trabajador, panel, listaPedidos, frameAncestor);
 		panel.add(npr, BorderLayout.EAST);
 		
-		NuevoPedidoC platos = new NuevoPedidoC(pedido,trabajador,"", panel, listaPedidos);
+		NuevoPedidoC platos = new NuevoPedidoC(pedido,trabajador,"", panel, listaPedidos, frameAncestor);
 		panel.add(platos, BorderLayout.CENTER);
 
 	}

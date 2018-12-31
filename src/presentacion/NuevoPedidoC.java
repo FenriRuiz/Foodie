@@ -1,5 +1,6 @@
 package presentacion;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.io.FileNotFoundException;
@@ -32,7 +33,7 @@ public class NuevoPedidoC extends JPanel {
 	 * @param mMenu 
 	 */
 
-	public NuevoPedidoC(Pedido pedido, Trabajador trab, String eleccion, JPanel panel2, ArrayList<Pedido> listaPed) {
+	public NuevoPedidoC(Pedido pedido, Trabajador trab, String eleccion, JPanel panel2, ArrayList<Pedido> listaPed, JFrame principal) {
 		
 		setLayout(new BorderLayout(0, 0));
 		
@@ -53,13 +54,13 @@ public class NuevoPedidoC extends JPanel {
 			int i;
 			for(i=0 ; i < listaComidas.size() ; i++) {
 				if(eleccion=="") {
-					NuevoPedidoCLP platillo = new NuevoPedidoCLP(pedido, trab, listaComidas.get(i), panel2, listaComidas, listaPed);
+					NuevoPedidoCLP platillo = new NuevoPedidoCLP(pedido, trab, listaComidas.get(i), panel2, listaComidas, listaPed, principal);
 					panel.add(platillo);
 					panel.repaint();
 					panel.revalidate();
 				}
 				else if(listaComidas.get(i).getPestana().equals(eleccion)) {
-					NuevoPedidoCLP platillo = new NuevoPedidoCLP(pedido, trab, listaComidas.get(i), panel2, listaComidas, listaPed);
+					NuevoPedidoCLP platillo = new NuevoPedidoCLP(pedido, trab, listaComidas.get(i), panel2, listaComidas, listaPed, principal);
 					panel.add(platillo);
 					panel.repaint();
 					panel.revalidate();

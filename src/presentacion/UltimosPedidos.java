@@ -3,7 +3,6 @@ package presentacion;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import dominio.Carrito;
 import dominio.Pedido;
 import dominio.Trabajador;
 
@@ -20,10 +19,9 @@ public class UltimosPedidos extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public UltimosPedidos(Trabajador trabajador, JFrame antecesor, ArrayList<Pedido> listaPedidos) {
+	public UltimosPedidos(Trabajador trabajador, JFrame antecesor, ArrayList<Pedido> listaPedidos, Pedido pedido) {
 		
-		ArrayList<Carrito> comidasPedido = new ArrayList<Carrito>();
-		Pedido pedido = new Pedido(trabajador,comidasPedido,"Sin pagar");
+
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
@@ -31,13 +29,13 @@ public class UltimosPedidos extends JPanel {
 		add(panel);
 		panel.setLayout(new BorderLayout(0, 0));
 		
-		InfoUsuario iuser = new InfoUsuario(trabajador, antecesor);
+		InfoUsuario iuser = new InfoUsuario(trabajador, antecesor, listaPedidos, pedido);
 		panel.add(iuser, BorderLayout.NORTH);
 		
-		NuevoPedidoR npr = new NuevoPedidoR(pedido, trabajador, panel, listaPedidos);
+		NuevoPedidoR npr = new NuevoPedidoR(pedido, trabajador, panel, listaPedidos, antecesor);
 		panel.add(npr, BorderLayout.EAST);
 		
-		UltimosPedidosC upc = new UltimosPedidosC(listaPedidos);
+		UltimosPedidosC upc = new UltimosPedidosC(listaPedidos, antecesor, trabajador, panel, pedido);
 		panel.add(upc, BorderLayout.CENTER);
 		
 

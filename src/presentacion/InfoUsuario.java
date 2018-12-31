@@ -2,6 +2,7 @@ package presentacion;
 
 import javax.swing.JPanel;
 
+import dominio.Pedido;
 import dominio.Trabajador;
 
 import java.awt.GridBagLayout;
@@ -16,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.border.BevelBorder;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class InfoUsuario extends JPanel {
@@ -32,10 +34,14 @@ public class InfoUsuario extends JPanel {
 	private JButton btnHome;
 	private JFrame frameAncestor;
 	private Trabajador trab;
+	private ArrayList<Pedido> listaPedidos;
+	private Pedido pedido;
 	/**
 	 * Create the panel.
 	 */
-	public InfoUsuario(Trabajador trabajador, JFrame frame) {
+	public InfoUsuario(Trabajador trabajador, JFrame frame, ArrayList<Pedido> listaPed, Pedido ped) {
+		pedido = ped;
+		listaPedidos = listaPed;
 		frameAncestor=frame;
 		trab = trabajador;
 		setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
@@ -122,7 +128,7 @@ public class InfoUsuario extends JPanel {
 
 	private class BtnHomeActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			Menu menu = new Menu(trab, frameAncestor);
+			Menu menu = new Menu(trab, frameAncestor, listaPedidos, pedido);
 			frameAncestor.getContentPane().remove(0);
 			frameAncestor.getContentPane().add(menu, BorderLayout.CENTER);
 			frameAncestor.revalidate();

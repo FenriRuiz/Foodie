@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import dominio.Comida;
+import dominio.Pedido;
 import dominio.Trabajador;
 
 import java.awt.BorderLayout;
@@ -21,7 +22,7 @@ public class GestionPlatos extends JPanel {
 	 * @param frameAncestor 
 	 * @throws FileNotFoundException 
 	 */
-	public GestionPlatos(Trabajador trabajador, JFrame frameAncestor) throws FileNotFoundException {
+	public GestionPlatos(Trabajador trabajador, JFrame frameAncestor,ArrayList<Pedido> listaPedidos, Pedido pedido) throws FileNotFoundException {
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
@@ -34,10 +35,10 @@ public class GestionPlatos extends JPanel {
 		GestionPlatosR pl = new GestionPlatosR(listaComidas.get(0), listaComidas);
 		panel.add(pl, BorderLayout.EAST);
 		
-		GestionPlatosL btnIzq = new GestionPlatosL(trabajador, frameAncestor, panel);
+		GestionPlatosL btnIzq = new GestionPlatosL(trabajador, frameAncestor, panel, listaPedidos, pedido);
 		panel.add(btnIzq, BorderLayout.WEST);
 		
-		InfoUsuario infUser = new InfoUsuario(trabajador, frameAncestor);
+		InfoUsuario infUser = new InfoUsuario(trabajador, frameAncestor, listaPedidos, pedido);
 		panel.add(infUser, BorderLayout.NORTH);
 		
 		GestionPlatosC mPlatos = new GestionPlatosC("", panel);

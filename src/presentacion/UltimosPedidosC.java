@@ -8,11 +8,16 @@ import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.SwingConstants;
 
 import java.util.ArrayList;
 import dominio.Pedido;
+import dominio.Trabajador;
+
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class UltimosPedidosC extends JPanel {
@@ -25,12 +30,20 @@ public class UltimosPedidosC extends JPanel {
 	private JScrollPane scrollPane;
 	private JButton btnAtras;
 	private JPanel panel_2;
+	private JFrame anterior;
+	private Trabajador trabajador;
+	private ArrayList<Pedido> listaPedidos;
+	private Pedido pedido;
 
 	/**
 	 * Create the panel.
 	 */
-	public UltimosPedidosC(ArrayList<Pedido> listaPedidos) {
+	public UltimosPedidosC(ArrayList<Pedido> listaPed, JFrame antecesor, Trabajador trab, JPanel panelAnte, Pedido ped) {
 		setLayout(new BorderLayout(0, 0));
+		anterior = antecesor;
+		listaPedidos = listaPed;
+		trabajador = trab;
+		pedido = ped;
 		
 		panel = new JPanel();
 		add(panel, BorderLayout.CENTER);
@@ -41,6 +54,7 @@ public class UltimosPedidosC extends JPanel {
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
 		btnAtras = new JButton("Atrás");
+		btnAtras.addActionListener(new BtnAtrasActionListener());
 		btnAtras.setHorizontalAlignment(SwingConstants.LEFT);
 		btnAtras.setBorderPainted(false);
 		btnAtras.setBackground(Color.WHITE);
@@ -59,10 +73,18 @@ public class UltimosPedidosC extends JPanel {
 		panel_2.setLayout(new GridLayout(0, 1, 0, 0));
 		int i;
 		for(i=0; i < listaPedidos.size(); i++) {
-			UltimosPedidosCLP upclp = new UltimosPedidosCLP();
+			UltimosPedidosCLP upclp = new UltimosPedidosCLP(listaPedidos.get(i), listaPedidos, panelAnte, antecesor);
 			panel_2.add(upclp);
 		}
 
 	}
 
+	private class BtnAtrasActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			Menu menu = new Menu(trabajador, anterior, listaPedidos, pedido);
+			anterior.getContentPane().remove(0);
+			anterior.getContentPane().add(menu, BorderLayout.CENTER);
+			anterior.revalidate();
+		}
+	}
 }

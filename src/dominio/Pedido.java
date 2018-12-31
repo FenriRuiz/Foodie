@@ -25,6 +25,12 @@ public class Pedido {
 	public Pedido() {
 		// TODO Auto-generated constructor stub
 	}
+	public String getUbicacion() {
+		return ubicacion;
+	}
+	public void setUbicacion(String ubicacion) {
+		this.ubicacion = ubicacion;
+	}
 	public Trabajador getTrabajador() {
 		return trabajador;
 	}

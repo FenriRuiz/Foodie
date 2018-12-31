@@ -14,12 +14,13 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.border.SoftBevelBorder;
 
+import dominio.Pedido;
 import dominio.Trabajador;
 
 import javax.swing.border.BevelBorder;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
-
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class GestionPlatosL extends JPanel {
@@ -39,13 +40,17 @@ public class GestionPlatosL extends JPanel {
 	private Trabajador trab;
 	private JButton btnCuchara;
 	private JPanel panel;
+	private ArrayList<Pedido> listaPedidos;
+	private Pedido pedido;
 	/**
 	 * Create the panel.
 	 * @param frameAncestor 
 	 * @param trabajador 
 	 * @param panel2 
 	 */
-	public GestionPlatosL(Trabajador trabajador, JFrame frame, JPanel panel2) {
+	public GestionPlatosL(Trabajador trabajador, JFrame frame, JPanel panel2, ArrayList<Pedido> listaPed, Pedido ped) {
+		listaPedidos = listaPed;
+		pedido = ped;
 		panel = panel2;
 		trab = trabajador;
 		frameAncestor = frame;
@@ -171,7 +176,7 @@ public class GestionPlatosL extends JPanel {
 
 	private class BtnNewButtonActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			Menu menu = new Menu(trab, frameAncestor);
+			Menu menu = new Menu(trab, frameAncestor, listaPedidos, pedido);
 			frameAncestor.getContentPane().remove(0);
 			frameAncestor.getContentPane().add(menu, BorderLayout.CENTER);
 			frameAncestor.revalidate();

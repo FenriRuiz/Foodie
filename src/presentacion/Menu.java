@@ -44,15 +44,17 @@ public class Menu extends JPanel {
 	private JFrame frameAncestor;
 	private Trabajador trab;
 	private ArrayList<Pedido> listaPedidos;
+	private Pedido pedido;
 
 	/**
 	 * Create the panel.
 	 * @param frame 
 	 */
-	public Menu(Trabajador trabajador, JFrame frameAn) {
-		listaPedidos = new ArrayList<Pedido>();
+	public Menu(Trabajador trabajador, JFrame frameAn, ArrayList<Pedido> listaPed, Pedido ped) {
+		listaPedidos = listaPed;
 		frameAncestor=frameAn;
 		trab = trabajador;
+		pedido = ped;
 		setBackground(Color.WHITE);
 		setForeground(Color.WHITE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -194,7 +196,7 @@ public class Menu extends JPanel {
 	private class LblPedidosActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			UltimosPedidos up;
-			up = new UltimosPedidos(trab, frameAncestor, listaPedidos);
+			up = new UltimosPedidos(trab, frameAncestor, listaPedidos, pedido);
 			frameAncestor.getContentPane().remove(0);
 			frameAncestor.getContentPane().add(up, BorderLayout.CENTER);
 			frameAncestor.revalidate();
@@ -213,7 +215,7 @@ public class Menu extends JPanel {
 		public void actionPerformed(ActionEvent arg0) {
 			GestionPlatos gp;
 			try {
-				gp = new GestionPlatos(trab, frameAncestor);
+				gp = new GestionPlatos(trab, frameAncestor, listaPedidos, pedido);
 				frameAncestor.getContentPane().remove(0);
 				frameAncestor.getContentPane().add(gp, BorderLayout.CENTER);
 				frameAncestor.revalidate();
@@ -228,7 +230,7 @@ public class Menu extends JPanel {
 		public void actionPerformed(ActionEvent arg0) {
 			NuevoPedido np;
 			try {
-				np = new NuevoPedido(trab, frameAncestor, listaPedidos);
+				np = new NuevoPedido(trab, frameAncestor, listaPedidos, pedido);
 				frameAncestor.getContentPane().remove(0);
 				frameAncestor.getContentPane().add(np, BorderLayout.CENTER);
 				frameAncestor.revalidate();

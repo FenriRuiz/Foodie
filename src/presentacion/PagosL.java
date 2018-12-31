@@ -24,10 +24,11 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class NuevoPedidoR extends JPanel {
+public class PagosL extends JPanel {
 	/**
 	 * 
 	 */
@@ -36,7 +37,7 @@ public class NuevoPedidoR extends JPanel {
 	private JPanel panel;
 	private JPanel panel_1;
 	private JLabel lblPrecioTotal;
-	private JButton btnPagar;
+	private JButton btnAtras;
 	private JLabel lblNewLabel_1;
 	private JLabel label;
 	private JPanel panel_2;
@@ -54,12 +55,12 @@ public class NuevoPedidoR extends JPanel {
 	 * @param mMenu 
 	 */
 
-	public NuevoPedidoR(Pedido ped, Trabajador trabajador, JPanel panel2, ArrayList<Pedido> listaPed, JFrame prin) {
+	public PagosL(Pedido ped, Trabajador trabajador, JPanel panel2, ArrayList<Pedido> listaPed, JFrame prin) {
 		listaPedido = listaPed;
 		principal = prin;
 		pedido = ped;
 		trab = trabajador;
-			
+
 		setLayout(new BorderLayout(0, 0));
 		
 		scrollPane = new JScrollPane();
@@ -75,25 +76,16 @@ public class NuevoPedidoR extends JPanel {
 		add(panel_1, BorderLayout.SOUTH);
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
-		btnPagar = new JButton("Pagar Pedido");
-		btnPagar.addActionListener(new BtnPagarActionListener());
-		btnPagar.setBackground(new Color(0, 250, 154));
-		btnPagar.setHorizontalTextPosition(SwingConstants.RIGHT);
-		btnPagar.setHorizontalAlignment(SwingConstants.RIGHT);
-		btnPagar.setIcon(new ImageIcon(NuevoPedidoR.class.getResource("/recursos/icons8-derecha-en-círculo-2-64.png")));
-		btnPagar.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 16));
-		panel_1.add(btnPagar, BorderLayout.EAST);
-		
 		panel_2 = new JPanel();
 		panel_2.setBackground(Color.WHITE);
 		panel_2.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		panel_2.setAlignmentY(Component.BOTTOM_ALIGNMENT);
-		panel_1.add(panel_2, BorderLayout.CENTER);
+		panel_1.add(panel_2, BorderLayout.EAST);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
-		gbl_panel_2.columnWidths = new int[]{57, 41, 40, 59, 0};
-		gbl_panel_2.rowHeights = new int[]{18, 0, 0};
-		gbl_panel_2.columnWeights = new double[]{1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_2.columnWidths = new int[]{46, 41, 40, 60, 0, 0};
+		gbl_panel_2.rowHeights = new int[]{0, 0};
+		gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_2.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
 		lblNewLabel_1 = new JLabel("Total:");
@@ -101,18 +93,18 @@ public class NuevoPedidoR extends JPanel {
 		lblNewLabel_1.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-		gbc_lblNewLabel_1.anchor = GridBagConstraints.NORTH;
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 0, 5);
 		gbc_lblNewLabel_1.gridx = 1;
-		gbc_lblNewLabel_1.gridy = 1;
+		gbc_lblNewLabel_1.gridy = 0;
 		panel_2.add(lblNewLabel_1, gbc_lblNewLabel_1);
 		lblNewLabel_1.setFont(new Font("Microsoft YaHei UI Light", Font.BOLD, 18));
 		
 		label = new JLabel("€");
 		GridBagConstraints gbc_label = new GridBagConstraints();
-		gbc_label.anchor = GridBagConstraints.NORTHWEST;
+		gbc_label.insets = new Insets(0, 0, 0, 5);
+		gbc_label.anchor = GridBagConstraints.WEST;
 		gbc_label.gridx = 3;
-		gbc_label.gridy = 1;
+		gbc_label.gridy = 0;
 		panel_2.add(label, gbc_label);
 		label.setFont(new Font("Microsoft YaHei UI Light", Font.BOLD, 18));
 		
@@ -128,24 +120,35 @@ public class NuevoPedidoR extends JPanel {
 		
 		lblPrecioTotal = new JLabel(String.valueOf(total));
 		GridBagConstraints gbc_lblPrecioTotal = new GridBagConstraints();
-		gbc_lblPrecioTotal.anchor = GridBagConstraints.NORTH;
 		gbc_lblPrecioTotal.insets = new Insets(0, 0, 0, 5);
 		gbc_lblPrecioTotal.gridx = 2;
-		gbc_lblPrecioTotal.gridy = 1;
+		gbc_lblPrecioTotal.gridy = 0;
 		panel_2.add(lblPrecioTotal, gbc_lblPrecioTotal);
 		lblPrecioTotal.setFont(new Font("Microsoft YaHei UI Light", Font.BOLD, 18));
+		
+		btnAtras = new JButton("Atrás");
+		panel_1.add(btnAtras, BorderLayout.WEST);
+		btnAtras.addActionListener(new BtnPagarActionListener());
+		btnAtras.setBackground(Color.WHITE);
+		btnAtras.setHorizontalTextPosition(SwingConstants.RIGHT);
+		btnAtras.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnAtras.setIcon(new ImageIcon(PagosL.class.getResource("/recursos/icons8-atrás-64.png")));
+		btnAtras.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 16));
 
 	}
 
 	private class BtnPagarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			pedido.setEstado("SinPagar");
-			listaPedido.add(pedido);
-			Pagos pay = new Pagos(trab, pedido, listaPedido, principal);
-			principal.getContentPane().remove(0);
-			principal.getContentPane().add(pay, BorderLayout.CENTER);
-			principal.revalidate();
-
+			NuevoPedido np;
+			try {
+				np = new NuevoPedido(trab, principal, listaPedido, pedido);
+				principal.getContentPane().remove(0);
+				principal.getContentPane().add(np, BorderLayout.CENTER);
+				principal.revalidate();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }

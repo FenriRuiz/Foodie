@@ -176,7 +176,7 @@ public class NuevoPedidoL extends JPanel {
 
 	private class BtnNewButtonActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			Menu menu = new Menu(trab, frameAncestor);
+			Menu menu = new Menu(trab, frameAncestor, listaPedido, ped);
 			frameAncestor.getContentPane().remove(0);
 			frameAncestor.getContentPane().add(menu, BorderLayout.CENTER);
 			frameAncestor.revalidate();
@@ -193,7 +193,7 @@ public class NuevoPedidoL extends JPanel {
 			btnPostres.setBackground(new Color(78, 190, 107));
 			BorderLayout layout = (BorderLayout) panel.getLayout();
 			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
-			NuevoPedidoC lpCarne = new NuevoPedidoC(ped,trab,"Carne", panel, listaPedido);
+			NuevoPedidoC lpCarne = new NuevoPedidoC(ped,trab,"Carne", panel, listaPedido, frameAncestor);
 			panel.add(lpCarne, BorderLayout.CENTER);
 			panel.repaint();
 			panel.revalidate();
@@ -211,7 +211,7 @@ public class NuevoPedidoL extends JPanel {
 			btnPostres.setBackground(new Color(78, 190, 107));
 			BorderLayout layout = (BorderLayout) panel.getLayout();
 			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
-			NuevoPedidoC lpMod = new NuevoPedidoC(ped,trab,"Pescado", panel, listaPedido);
+			NuevoPedidoC lpMod = new NuevoPedidoC(ped,trab,"Pescado", panel, listaPedido, frameAncestor);
 			panel.add(lpMod, BorderLayout.CENTER);
 			panel.repaint();
 			panel.revalidate();
@@ -228,7 +228,7 @@ public class NuevoPedidoL extends JPanel {
 			btnPostres.setBackground(new Color(78, 190, 107));
 			BorderLayout layout = (BorderLayout) panel.getLayout();
 			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
-			NuevoPedidoC lpMod = new NuevoPedidoC(ped,trab,"Pasta", panel, listaPedido);
+			NuevoPedidoC lpMod = new NuevoPedidoC(ped,trab,"Pasta", panel, listaPedido, frameAncestor);
 			panel.add(lpMod, BorderLayout.CENTER);
 			panel.repaint();
 			panel.revalidate();
@@ -245,7 +245,7 @@ public class NuevoPedidoL extends JPanel {
 			btnPostres.setBackground(new Color(78, 190, 107));
 			BorderLayout layout = (BorderLayout) panel.getLayout();
 			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
-			NuevoPedidoC lpMod = new NuevoPedidoC(ped,trab,"Vegano", panel, listaPedido);
+			NuevoPedidoC lpMod = new NuevoPedidoC(ped,trab,"Vegano", panel, listaPedido, frameAncestor);
 			panel.add(lpMod, BorderLayout.CENTER);
 			panel.repaint();
 			panel.revalidate();
@@ -262,7 +262,7 @@ public class NuevoPedidoL extends JPanel {
 			btnPostres.setBackground(new Color(78, 190, 107));
 			BorderLayout layout = (BorderLayout) panel.getLayout();
 			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
-			NuevoPedidoC lpMod = new NuevoPedidoC(ped,trab,"Cuchara", panel, listaPedido);
+			NuevoPedidoC lpMod = new NuevoPedidoC(ped,trab,"Cuchara", panel, listaPedido, frameAncestor);
 			panel.add(lpMod, BorderLayout.CENTER);
 			panel.repaint();
 			panel.revalidate();
@@ -280,7 +280,7 @@ public class NuevoPedidoL extends JPanel {
 			btnPostres.setBackground(new Color(78, 190, 107));
 			BorderLayout layout = (BorderLayout) panel.getLayout();
 			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
-			NuevoPedidoC lpMod = new NuevoPedidoC(ped,trab,"Bebida", panel, listaPedido);
+			NuevoPedidoC lpMod = new NuevoPedidoC(ped,trab,"Bebida", panel, listaPedido, frameAncestor);
 			panel.add(lpMod, BorderLayout.CENTER);
 			panel.repaint();
 			panel.revalidate();
@@ -297,7 +297,7 @@ public class NuevoPedidoL extends JPanel {
 			btnPostres.setBackground(new Color(82, 155, 72));
 			BorderLayout layout = (BorderLayout) panel.getLayout();
 			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
-			NuevoPedidoC lpMod = new NuevoPedidoC(ped,trab,"Postre", panel, listaPedido);
+			NuevoPedidoC lpMod = new NuevoPedidoC(ped,trab,"Postre", panel, listaPedido, frameAncestor);
 			panel.add(lpMod, BorderLayout.CENTER);
 			panel.repaint();
 			panel.revalidate();

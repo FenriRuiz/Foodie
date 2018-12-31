@@ -20,6 +20,8 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Toolkit;
 
+import dominio.Carrito;
+import dominio.Pedido;
 import dominio.Trabajador;
 
 import java.awt.event.ActionListener;
@@ -44,13 +46,16 @@ public class IniciarSesion {
 	private JLabel lblidioma;
 	private JLabel lblError;
 
+
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
 					IniciarSesion window = new IniciarSesion();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -222,10 +227,14 @@ public class IniciarSesion {
 			int i;
 			Trabajador trab = new Trabajador();
 			ArrayList<Trabajador> listrab = trab.leerTrabajadores();
+			ArrayList<Carrito> comidasPedido = new ArrayList<Carrito>();
+			ArrayList<Pedido> listaPedidos = new  ArrayList<Pedido>();
+			Pedido pedido = new Pedido(trab,comidasPedido,"Sin pagar");
+			
 			for(i=0;i<listrab.size();i++) {
 				if(listrab.get(i).getName().equals(textField.getText()) && listrab.get(i).getPassword().equals(String.valueOf(passwordField.getPassword()))) {
 					@SuppressWarnings("unused")
-					Principal vntPrin = new Principal(listrab.get(i));
+					Principal vntPrin = new Principal(listrab.get(i), listaPedidos, pedido);
 					frame.dispose();
 				}
 			}
