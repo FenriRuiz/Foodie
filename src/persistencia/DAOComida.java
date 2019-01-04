@@ -15,7 +15,7 @@ public class DAOComida {
 	
 	public ArrayList<Comida> getAllDish(){
 		
-		File file = new File("src/persistencia/Comidas.txt");
+		File file = new File("Comidas.txt");
 		Scanner datos;
 		ArrayList<Comida> dishes = new ArrayList<Comida>();
 
@@ -53,7 +53,7 @@ public class DAOComida {
 	}
 	public int addDish(Comida com) throws IOException {
 		BufferedWriter file;
-		file = new BufferedWriter(new FileWriter("src/persistencia/Comidas.txt",true));
+		file = new BufferedWriter(new FileWriter("Comidas.txt",true));
 
 		file.write(String.valueOf(com.getIdentificador()) + ";");
 		file.write(com.getPestana() + ";");
