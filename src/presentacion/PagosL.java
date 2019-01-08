@@ -128,6 +128,7 @@ public class PagosL extends JPanel {
 		lblPrecioTotal.setFont(new Font("Microsoft YaHei UI Light", Font.BOLD, 18));
 		
 		btnAtras = new JButton("Atrás");
+		btnAtras.setBorderPainted(false);
 		panel_1.add(btnAtras, BorderLayout.WEST);
 		btnAtras.addActionListener(new BtnPagarActionListener());
 		btnAtras.setBackground(Color.WHITE);

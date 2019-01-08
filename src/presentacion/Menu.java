@@ -122,8 +122,8 @@ public class Menu extends JPanel {
 		add(lblPedidos, gbc_lblPedidos);
 		
 		lblHabituales = new JButton("");
+		lblHabituales.addActionListener(new LblHabitualesActionListener());
 		lblHabituales.setToolTipText("Disponible en la proxima actualización");
-		lblHabituales.setEnabled(false);
 		lblHabituales.setBorderPainted(false);
 		lblHabituales.setBackground(Color.WHITE);
 		lblHabituales.setIcon(new ImageIcon(Menu.class.getResource("/recursos/icons8-llamada-de-conferencia-96.png")));
@@ -237,6 +237,15 @@ public class Menu extends JPanel {
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
+		}
+	}
+	private class LblHabitualesActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			ClientesHabituales ch;
+			ch = new ClientesHabituales(pedido, trab, listaPedidos, frameAncestor);
+			frameAncestor.getContentPane().remove(0);
+			frameAncestor.getContentPane().add(ch, BorderLayout.CENTER);
+			frameAncestor.revalidate();
 		}
 	}
 	

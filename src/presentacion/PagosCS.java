@@ -186,6 +186,12 @@ public class PagosCS extends JPanel {
 		public void actionPerformed(ActionEvent arg0) {
 			pedido.setTrabajador(trabajador);
 			pedido.setEstado("SinPagar");
+			if(listaPedido.isEmpty()) {
+				pedido.setnPedido(1);
+			}
+			else {
+				pedido.setnPedido(listaPedido.size()+1);
+			}
 			listaPedido.add(pedido);
 			ArrayList<Carrito> comidasPedido = new ArrayList<Carrito>();
 			Pedido nextPed = new Pedido(trabajador,comidasPedido, "SinPagar");
@@ -200,6 +206,12 @@ public class PagosCS extends JPanel {
 		public void actionPerformed(ActionEvent arg0) {
 			pedido.setTrabajador(trabajador);
 			pedido.setEstado("Pagado");
+			if(listaPedido.isEmpty()) {
+				pedido.setnPedido(1);
+			}
+			else {
+				pedido.setnPedido(listaPedido.size()+1);
+			}
 			listaPedido.add(pedido);
 			ArrayList<Carrito> comidasPedido = new ArrayList<Carrito>();
 			Pedido nextPed = new Pedido(trabajador,comidasPedido, "SinPagar");

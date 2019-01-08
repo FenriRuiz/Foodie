@@ -46,7 +46,7 @@ public class NuevoPedidoRLP extends JPanel {
 		panel = ancestor;
 		setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		
-		setBackground(new Color(60, 179, 113));
+		setBackground(new Color(90, 209, 143));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 3, 28, 36, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0};

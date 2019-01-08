@@ -132,7 +132,7 @@ public class GestionPlatosR extends JPanel {
 		add(lblPestana, gbc_lblPestana);
 		
 		comboBox = new JComboBox<String>();
-		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"Carne", "Pescado", "Pasta", "Vegie", "Cuchara", "Bebida", "Postre"}));
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {String.valueOf(com.getPestana()) ,"Carne", "Pescado", "Pasta", "Vegie", "Cuchara", "Bebida", "Postre"}));
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.gridwidth = 2;
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
@@ -228,7 +228,7 @@ public class GestionPlatosR extends JPanel {
 		add(lblPrecio, gbc_lblPrecio);
 		
 		spinner = new JSpinner();
-		spinner.setModel(new SpinnerNumberModel(0.0, 0.0, 10.0, 0.1));
+		spinner.setModel(new SpinnerNumberModel(comida.getPrecio(), 0.0, 10.0, 0.1));
 		GridBagConstraints gbc_spinner = new GridBagConstraints();
 		gbc_spinner.gridwidth = 2;
 		gbc_spinner.insets = new Insets(0, 0, 5, 5);

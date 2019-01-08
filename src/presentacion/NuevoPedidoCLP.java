@@ -61,8 +61,8 @@ public class NuevoPedidoCLP extends JPanel {
 		panel = panel2;
 		
 		addMouseListener(new ThisMouseListener());
-		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(48, 153, 232), null, null, null));
-		setBackground(new Color(86, 203, 182));
+		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(118, 242, 153), null, null, null));
+		setBackground(new Color(193, 242, 175));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 77, 75, 76, 75, 69, 71, 0, 0};
 		gridBagLayout.rowHeights = new int[]{37, 84, 0, 0};
@@ -196,13 +196,13 @@ public class NuevoPedidoCLP extends JPanel {
 		@Override
 		public void mousePressed(MouseEvent arg0) {
 			setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(48, 153, 232), null, null, null));
-			setBackground(new Color(91, 213, 166));
+			setBackground(new Color(99, 203, 128));
 
 		}
 		@Override
 		public void mouseReleased(MouseEvent arg0) {
-			setBorder(new BevelBorder(BevelBorder.RAISED, new Color(48, 153, 232), null, null, null));
-			setBackground(new Color(86, 203, 182));
+			setBorder(new BevelBorder(BevelBorder.RAISED, new Color(118, 242, 153), null, null, null));
+			setBackground(new Color(193, 242, 175));
 			BorderLayout layout = (BorderLayout) panel.getLayout();
 			panel.remove(layout.getLayoutComponent(BorderLayout.EAST));
 

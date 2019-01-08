@@ -49,9 +49,9 @@ public class GestionPlatosCLP extends JPanel {
 		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(128, 0, 128), null, null, null));
 		setBackground(new Color(255, 198, 112));
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 77, 75, 76, 75, 69, 71, 0, 0};
+		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 77, 75, 76, 208, 0, 69, 71, 0, 0};
 		gridBagLayout.rowHeights = new int[]{37, 84, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
@@ -80,16 +80,16 @@ public class GestionPlatosCLP extends JPanel {
 		GridBagConstraints gbc_lblPrecio = new GridBagConstraints();
 		gbc_lblPrecio.gridheight = 2;
 		gbc_lblPrecio.insets = new Insets(0, 0, 5, 5);
-		gbc_lblPrecio.gridx = 8;
+		gbc_lblPrecio.gridx = 9;
 		gbc_lblPrecio.gridy = 0;
 		add(lblPrecio, gbc_lblPrecio);
 		
-		lblPrecios = new JLabel(String.valueOf(comida.getPrecio()) + " €");
+		lblPrecios = new JLabel( String.valueOf(comida.getPrecio())+"€   ");
 		lblPrecios.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 16));
 		GridBagConstraints gbc_lblPrecios = new GridBagConstraints();
 		gbc_lblPrecios.gridheight = 2;
 		gbc_lblPrecios.insets = new Insets(0, 0, 5, 5);
-		gbc_lblPrecios.gridx = 9;
+		gbc_lblPrecios.gridx = 10;
 		gbc_lblPrecios.gridy = 0;
 		add(lblPrecios, gbc_lblPrecios);
 		

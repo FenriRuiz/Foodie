@@ -3,6 +3,7 @@ package dominio;
 import java.util.ArrayList;
 
 public class Pedido {
+	int nPedido;
 	Trabajador trabajador;
 	ArrayList<Carrito> comidasPedido;
 	String estado;
@@ -21,9 +22,24 @@ public class Pedido {
 		this.estado = estado;
 		this.ubicacion = ubicacion;
 	}
+	public Pedido(int nPedido, Trabajador trabajador, ArrayList<Carrito> comidasPedido, String estado, String ubicacion) {
+		super();
+		this.nPedido = nPedido;
+		this.trabajador = trabajador;
+		this.comidasPedido = comidasPedido;
+		this.estado = estado;
+		this.ubicacion = ubicacion;
+	}
 	
 	public Pedido() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public int getnPedido() {
+		return nPedido;
+	}
+	public void setnPedido(int nPedido) {
+		this.nPedido = nPedido;
 	}
 	public String getUbicacion() {
 		return ubicacion;

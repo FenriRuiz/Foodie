@@ -54,7 +54,7 @@ public class GestionPlatosL extends JPanel {
 		panel = panel2;
 		trab = trabajador;
 		frameAncestor = frame;
-		setBackground(new Color(255, 153, 0));
+		setBackground(new Color(255, 148, 62));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -185,12 +185,12 @@ public class GestionPlatosL extends JPanel {
 	private class BtnCarneActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			btnCarne.setBackground(new Color(255, 79, 50));
-			btnPescado.setBackground(new Color(255, 153, 0));
-			btnPasta.setBackground(new Color(255, 153, 0));
-			btnVegie.setBackground(new Color(255, 153, 0));
-			btnCuchara.setBackground(new Color(255, 153, 0));
-			btnBebidas.setBackground(new Color(255, 153, 0));
-			btnPostres.setBackground(new Color(255, 153, 0));
+			btnPescado.setBackground(new Color(255, 148, 62));
+			btnPasta.setBackground(new Color(255, 148, 62));
+			btnVegie.setBackground(new Color(255, 148, 62));
+			btnCuchara.setBackground(new Color(255, 148, 62));
+			btnBebidas.setBackground(new Color(255, 148, 62));
+			btnPostres.setBackground(new Color(255, 148, 62));
 			BorderLayout layout = (BorderLayout) panel.getLayout();
 			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
 			GestionPlatosC lpCarne = new GestionPlatosC("Carne", panel);
@@ -202,13 +202,13 @@ public class GestionPlatosL extends JPanel {
 	}
 	private class BtnPescadoActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			btnCarne.setBackground(new Color(255, 153, 0));
+			btnCarne.setBackground(new Color(255, 148, 62));
 			btnPescado.setBackground(new Color(255, 79, 50));
-			btnPasta.setBackground(new Color(255, 153, 0));
-			btnVegie.setBackground(new Color(255, 153, 0));
-			btnCuchara.setBackground(new Color(255, 153, 0));
-			btnBebidas.setBackground(new Color(255, 153, 0));
-			btnPostres.setBackground(new Color(255, 153, 0));
+			btnPasta.setBackground(new Color(255, 148, 62));
+			btnVegie.setBackground(new Color(255, 148, 62));
+			btnCuchara.setBackground(new Color(255, 148, 62));
+			btnBebidas.setBackground(new Color(255, 148, 62));
+			btnPostres.setBackground(new Color(255, 148, 62));
 			BorderLayout layout = (BorderLayout) panel.getLayout();
 			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
 			GestionPlatosC lpMod = new GestionPlatosC("Pescado", panel);
@@ -219,13 +219,13 @@ public class GestionPlatosL extends JPanel {
 	}
 	private class BtnPastaActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			btnCarne.setBackground(new Color(255, 153, 0));
-			btnPescado.setBackground(new Color(255, 153, 0));
+			btnCarne.setBackground(new Color(255, 148, 62));
+			btnPescado.setBackground(new Color(255, 148, 62));
 			btnPasta.setBackground(new Color(255, 79, 50));
-			btnVegie.setBackground(new Color(255, 153, 0));
-			btnCuchara.setBackground(new Color(255, 153, 0));
-			btnBebidas.setBackground(new Color(255, 153, 0));
-			btnPostres.setBackground(new Color(255, 153, 0));
+			btnVegie.setBackground(new Color(255, 148, 62));
+			btnCuchara.setBackground(new Color(255, 148, 62));
+			btnBebidas.setBackground(new Color(255, 148, 62));
+			btnPostres.setBackground(new Color(255, 148, 62));
 			BorderLayout layout = (BorderLayout) panel.getLayout();
 			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
 			GestionPlatosC lpMod = new GestionPlatosC("Pasta", panel);
@@ -236,13 +236,13 @@ public class GestionPlatosL extends JPanel {
 	}
 	private class BtnVegieActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			btnCarne.setBackground(new Color(255, 153, 0));
-			btnPescado.setBackground(new Color(255, 153, 0));
-			btnPasta.setBackground(new Color(255, 153, 0));
+			btnCarne.setBackground(new Color(255, 148, 62));
+			btnPescado.setBackground(new Color(255, 148, 62));
+			btnPasta.setBackground(new Color(255, 148, 62));
 			btnVegie.setBackground(new Color(255, 79, 50));
-			btnCuchara.setBackground(new Color(255, 153, 0));
-			btnBebidas.setBackground(new Color(255, 153, 0));
-			btnPostres.setBackground(new Color(255, 153, 0));
+			btnCuchara.setBackground(new Color(255, 148, 62));
+			btnBebidas.setBackground(new Color(255, 148, 62));
+			btnPostres.setBackground(new Color(255, 148, 62));
 			BorderLayout layout = (BorderLayout) panel.getLayout();
 			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
 			GestionPlatosC lpMod = new GestionPlatosC("Vegano", panel);
@@ -253,13 +253,13 @@ public class GestionPlatosL extends JPanel {
 	}
 	private class BtnCucharaActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			btnCarne.setBackground(new Color(255, 153, 0));
-			btnPescado.setBackground(new Color(255, 153, 0));
-			btnPasta.setBackground(new Color(255, 153, 0));
-			btnVegie.setBackground(new Color(255, 153, 0));
+			btnCarne.setBackground(new Color(255, 148, 62));
+			btnPescado.setBackground(new Color(255, 148, 62));
+			btnPasta.setBackground(new Color(255, 148, 62));
+			btnVegie.setBackground(new Color(255, 148, 62));
 			btnCuchara.setBackground(new Color(255, 79, 50));
-			btnBebidas.setBackground(new Color(255, 153, 0));
-			btnPostres.setBackground(new Color(255, 153, 0));
+			btnBebidas.setBackground(new Color(255, 148, 62));
+			btnPostres.setBackground(new Color(255, 148, 62));
 			BorderLayout layout = (BorderLayout) panel.getLayout();
 			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
 			GestionPlatosC lpMod = new GestionPlatosC("Cuchara", panel);
@@ -271,13 +271,13 @@ public class GestionPlatosL extends JPanel {
 
 	private class BtnBebidasActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			btnCarne.setBackground(new Color(255, 153, 0));
-			btnPescado.setBackground(new Color(255, 153, 0));
-			btnPasta.setBackground(new Color(255, 153, 0));
-			btnVegie.setBackground(new Color(255, 153, 0));
-			btnCuchara.setBackground(new Color(255, 153, 0));
+			btnCarne.setBackground(new Color(255, 148, 62));
+			btnPescado.setBackground(new Color(255, 148, 62));
+			btnPasta.setBackground(new Color(255, 148, 62));
+			btnVegie.setBackground(new Color(255, 148, 62));
+			btnCuchara.setBackground(new Color(255, 148, 62));
 			btnBebidas.setBackground(new Color(255, 79, 50));
-			btnPostres.setBackground(new Color(255, 153, 0));
+			btnPostres.setBackground(new Color(255, 148, 62));
 			BorderLayout layout = (BorderLayout) panel.getLayout();
 			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
 			GestionPlatosC lpMod = new GestionPlatosC("Bebida", panel);
@@ -288,12 +288,12 @@ public class GestionPlatosL extends JPanel {
 	}
 	private class BtnPostresActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			btnCarne.setBackground(new Color(255, 153, 0));
-			btnPescado.setBackground(new Color(255, 153, 0));
-			btnPasta.setBackground(new Color(255, 153, 0));
-			btnVegie.setBackground(new Color(255, 153, 0));
-			btnCuchara.setBackground(new Color(255, 153, 0));
-			btnBebidas.setBackground(new Color(255, 153, 0));
+			btnCarne.setBackground(new Color(255, 148, 62));
+			btnPescado.setBackground(new Color(255, 148, 62));
+			btnPasta.setBackground(new Color(255, 148, 62));
+			btnVegie.setBackground(new Color(255, 148, 62));
+			btnCuchara.setBackground(new Color(255, 148, 62));
+			btnBebidas.setBackground(new Color(255, 148, 62));
 			btnPostres.setBackground(new Color(255, 79, 50));
 			BorderLayout layout = (BorderLayout) panel.getLayout();
 			panel.remove(layout.getLayoutComponent(BorderLayout.CENTER));

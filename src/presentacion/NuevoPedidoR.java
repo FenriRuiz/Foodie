@@ -76,8 +76,9 @@ public class NuevoPedidoR extends JPanel {
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
 		btnPagar = new JButton("Pagar Pedido");
+		btnPagar.setBorderPainted(false);
 		btnPagar.addActionListener(new BtnPagarActionListener());
-		btnPagar.setBackground(new Color(0, 250, 154));
+		btnPagar.setBackground(Color.WHITE);
 		btnPagar.setHorizontalTextPosition(SwingConstants.RIGHT);
 		btnPagar.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnPagar.setIcon(new ImageIcon(NuevoPedidoR.class.getResource("/recursos/icons8-derecha-en-círculo-2-64.png")));

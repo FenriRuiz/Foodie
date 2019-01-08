@@ -52,7 +52,7 @@ public class NuevoPedidoC extends JPanel {
 			Comida comida = new Comida();
 			ArrayList<Comida> listaComidas = comida.leerComidas();
 			int i;
-			for(i=0 ; i < listaComidas.size() ; i++) {
+			for(i=1 ; i < listaComidas.size() ; i++) {
 				if(eleccion=="") {
 					NuevoPedidoCLP platillo = new NuevoPedidoCLP(pedido, trab, listaComidas.get(i), panel2, listaComidas, listaPed, principal);
 					panel.add(platillo);

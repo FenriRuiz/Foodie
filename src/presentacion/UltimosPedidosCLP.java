@@ -7,7 +7,6 @@ import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Font;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JProgressBar;
 
@@ -18,6 +17,10 @@ import javax.swing.border.BevelBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class UltimosPedidosCLP extends JPanel {
 	/**
@@ -27,7 +30,6 @@ public class UltimosPedidosCLP extends JPanel {
 	private JPanel panel;
 	private JLabel lblNpedido;
 	private JLabel lblTrabajador;
-	private JCheckBox chPagado;
 	private JLabel lblDireccion;
 	private JProgressBar progressBar;
 	private JLabel lblEstado;
@@ -35,6 +37,8 @@ public class UltimosPedidosCLP extends JPanel {
 	private ArrayList<Pedido> listaPedido;
 	private JPanel anterior;
 	private JFrame principal;
+	private JButton btnEliminar;
+	private JButton btnCompletar;
 	/**
 	 * Create the panel.
 	 */
@@ -53,11 +57,11 @@ public class UltimosPedidosCLP extends JPanel {
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{23, 73, 0, 0, 0, 0, 0};
 		gbl_panel.rowHeights = new int[]{0, 0, 0, 17, 0, 0};
-		gbl_panel.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
-		lblNpedido = new JLabel("1");
+		lblNpedido = new JLabel(String.valueOf(ped.getnPedido()));
 		lblNpedido.setFont(new Font("Microsoft YaHei UI Light", Font.BOLD, 15));
 		GridBagConstraints gbc_lblNpedido = new GridBagConstraints();
 		gbc_lblNpedido.gridwidth = 2;
@@ -75,16 +79,15 @@ public class UltimosPedidosCLP extends JPanel {
 		gbc_lblTrabajador.gridy = 1;
 		panel.add(lblTrabajador, gbc_lblTrabajador);
 		
-		chPagado = new JCheckBox("Pagado");
-		chPagado.setEnabled(false);
-		chPagado.setFont(new Font("Microsoft YaHei UI Light", Font.BOLD, 15));
-		chPagado.setOpaque(false);
-		GridBagConstraints gbc_chPagado = new GridBagConstraints();
-		gbc_chPagado.anchor = GridBagConstraints.EAST;
-		gbc_chPagado.insets = new Insets(0, 0, 5, 5);
-		gbc_chPagado.gridx = 3;
-		gbc_chPagado.gridy = 1;
-		panel.add(chPagado, gbc_chPagado);
+		btnEliminar = new JButton("");
+		btnEliminar.setBackground(new Color(255, 121, 108));
+		btnEliminar.setBorderPainted(false);
+		btnEliminar.setIcon(new ImageIcon(UltimosPedidosCLP.class.getResource("/recursos/borrar.png")));
+		GridBagConstraints gbc_btnEliminar = new GridBagConstraints();
+		gbc_btnEliminar.insets = new Insets(0, 0, 5, 5);
+		gbc_btnEliminar.gridx = 4;
+		gbc_btnEliminar.gridy = 1;
+		panel.add(btnEliminar, gbc_btnEliminar);
 		
 		lblDireccion = new JLabel("Dirección: " + String.valueOf(pedido.getUbicacion()));
 		lblDireccion.setFont(new Font("Microsoft YaHei UI Light", Font.BOLD, 15));
@@ -97,6 +100,21 @@ public class UltimosPedidosCLP extends JPanel {
 		if(pedido.getUbicacion() == null) {
 			lblDireccion.setText("Comida en Local");
 		}
+		
+		btnCompletar = new JButton("Entregado");
+		btnCompletar.setBorderPainted(false);
+		btnCompletar.addActionListener(new BtnCompletarActionListener());
+		btnCompletar.setIcon(new ImageIcon(UltimosPedidosCLP.class.getResource("/recursos/comprobado.png")));
+		btnCompletar.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 15));
+		btnCompletar.setVisible(false);
+		btnCompletar.setBackground(new Color(255, 217, 74));
+		GridBagConstraints gbc_btnCompletar = new GridBagConstraints();
+		gbc_btnCompletar.fill = GridBagConstraints.BOTH;
+		gbc_btnCompletar.gridheight = 2;
+		gbc_btnCompletar.insets = new Insets(0, 0, 5, 5);
+		gbc_btnCompletar.gridx = 3;
+		gbc_btnCompletar.gridy = 1;
+		panel.add(btnCompletar, gbc_btnCompletar);
 		
 		progressBar = new JProgressBar();
 		GridBagConstraints gbc_progressBar = new GridBagConstraints();
@@ -118,24 +136,25 @@ public class UltimosPedidosCLP extends JPanel {
 		
 		switch(pedido.getEstado()) {
 		case "SinPagar":
-			panel.setBackground(new Color(191,73,89));
-			chPagado.setSelected(false);
+			panel.setBackground(new Color(255, 121, 108));
+			btnEliminar.setVisible(true);
 			progressBar.setValue(25);
 			break;
 		case "Pagado":
-			panel.setBackground(new Color(204,255,167));
-			chPagado.setSelected(true);
+			panel.setBackground(new Color(235, 150, 69));
+			btnEliminar.setVisible(false);
 			progressBar.setValue(50 + (int)Math.random()*25);
 			break;
 		case "Terminado":
-			panel.setBackground(new Color(138,255,54));
-			chPagado.setSelected(true);
+			btnCompletar.setVisible(true);
+			panel.setBackground(new Color(255, 217, 74));
+			btnEliminar.setVisible(false);
 			progressBar.setValue(75);
 
 			break;
 		case "Entregado":
-			panel.setBackground(new Color(16,255,29));
-			chPagado.setSelected(true);
+			panel.setBackground(new Color(194, 232, 70));
+			btnEliminar.setVisible(false);
 			progressBar.setValue(100);
 			panel.setRequestFocusEnabled(false);
 
@@ -152,11 +171,18 @@ public class UltimosPedidosCLP extends JPanel {
 			anterior.add(npr, BorderLayout.EAST);
 			anterior.repaint();
 			anterior.revalidate();
+			listaPedido.get(Integer.parseInt(lblNpedido.getText())-1).setEstado("Terminado");
 		}
 		@Override
 		public void mousePressed(MouseEvent arg0) {
 			panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 			
+		}
+	}
+
+	private class BtnCompletarActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			listaPedido.get(Integer.parseInt(lblNpedido.getText())-1).setEstado("Entregado");
 		}
 	}
 }
